@@ -14,14 +14,29 @@ class ViewController: UIViewController {
     
     @IBOutlet var myView: UIView!
     
-    var points1 = 20.0
+    //PointsVariables
+    var redPunch = Double()
+    var redDefense = Double()
+    var redEffAgg = Double()
+    var redRingGen = Double()
+    var bluePunch = Double()
+    var blueDefense = Double()
+    var blueEffAgg = Double()
+    var blueRingGen = Double()
     
     private var chart: Chart?
     
-    private let dirSelectorHeight: CGFloat = 50
+    private let dirSelectorHeight: CGFloat = 30
+    
+    func rotatePortrait(){
+        let value = UIInterfaceOrientation.Portrait.rawValue
+        UIDevice.currentDevice().setValue(value, forKey: "orientation")
+    }
     
     override func viewDidLoad() {
             super.viewDidLoad()
+        
+        rotatePortrait()
         self.showChart(horizontal: false)
         if let chart = self.chart {
             let dirSelector = DirSelector(frame: CGRectMake(0, chart.frame.origin.y + chart.frame.size.height, self.myView.frame.size.width, self.dirSelectorHeight), controller: self)
@@ -41,20 +56,20 @@ class ViewController: UIViewController {
         
         let groupsData: [(title: String, [(min: Double, max: Double)])] = [
             ("Punches", [
-                (0, points1),
-                (0, 100),
+                (0, redPunch),
+                (0, bluePunch),
                 ]),
             ("Defense", [
-                (0, 20),
-                (0, 25),
+                (0, redDefense),
+                (0, blueDefense),
                 ]),
             ("Eff-Agg", [
-                (0, 30),
-                (0, 15),
+                (0, redEffAgg),
+                (0, blueEffAgg),
                 ]),
             ("Ring-Gen", [
-                (0, 20),
-                (0, 35),
+                (0, redRingGen),
+                (0, blueRingGen),
                 ])
         ]
         
@@ -69,7 +84,7 @@ class ViewController: UIViewController {
         }
         
         let (axisValues1, axisValues2): ([ChartAxisValue], [ChartAxisValue]) = (
-            0.stride(through: 50, by: 5).map {ChartAxisValueDouble(Double($0), labelSettings: labelSettings)},
+            0.stride(through: 40, by: 5).map {ChartAxisValueDouble(Double($0), labelSettings: labelSettings)},
             [ChartAxisValueString(order: -1)] +
                 groupsData.enumerate().map {index, tuple in ChartAxisValueString(tuple.0, order: index, labelSettings: labelSettings)} +
                 [ChartAxisValueString(order: groupsData.count)]
