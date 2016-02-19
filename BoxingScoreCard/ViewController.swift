@@ -36,6 +36,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
             super.viewDidLoad()
         
+        myView.layer.borderWidth = 0.5
+        myView.layer.borderColor = (UIColor.blackColor()).CGColor
+        
         rotatePortrait()
         self.showChart(horizontal: false)
         if let chart = self.chart {
@@ -48,6 +51,11 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func finishRoundTapped(sender: UIButton) {
+        self.navigationController!.popToRootViewControllerAnimated(true)
+        
     }
 
     func barsChart(horizontal horizontal: Bool) -> Chart {
@@ -189,6 +197,9 @@ class ViewController: UIViewController {
         required init(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
+        
+        
     }
+    
 }
 

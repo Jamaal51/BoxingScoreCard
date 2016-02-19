@@ -17,6 +17,7 @@
 		9A8586381C7394A700DA7BC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A8586371C7394A700DA7BC0 /* Main.storyboard */; };
 		9A85863C1C73952700DA7BC0 /* BSRoundDetailScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A85863B1C73952700DA7BC0 /* BSRoundDetailScore.swift */; };
 		9A85863E1C739A1300DA7BC0 /* BSRoundsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A85863D1C739A1300DA7BC0 /* BSRoundsTableView.swift */; };
+		9A8586441C76917500DA7BC0 /* Rounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8586431C76917500DA7BC0 /* Rounds.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		9A8586371C7394A700DA7BC0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9A85863B1C73952700DA7BC0 /* BSRoundDetailScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSRoundDetailScore.swift; sourceTree = "<group>"; };
 		9A85863D1C739A1300DA7BC0 /* BSRoundsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSRoundsTableView.swift; sourceTree = "<group>"; };
+		9A8586431C76917500DA7BC0 /* Rounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rounds.swift; sourceTree = "<group>"; };
 		E4C61936BA15AEA0AA8352DF /* Pods_BoxingScoreCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoxingScoreCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -73,6 +75,7 @@
 				9A8586211C72F2FD00DA7BC0 /* AppDelegate.swift */,
 				9A8586351C73775700DA7BC0 /* ChartDefaults.swift */,
 				9A85863D1C739A1300DA7BC0 /* BSRoundsTableView.swift */,
+				9A8586431C76917500DA7BC0 /* Rounds.swift */,
 				9A85863B1C73952700DA7BC0 /* BSRoundDetailScore.swift */,
 				9A8586231C72F2FD00DA7BC0 /* ViewController.swift */,
 				9A8586371C7394A700DA7BC0 /* Main.storyboard */,
@@ -226,6 +229,7 @@
 			files = (
 				9A85863E1C739A1300DA7BC0 /* BSRoundsTableView.swift in Sources */,
 				9A8586241C72F2FD00DA7BC0 /* ViewController.swift in Sources */,
+				9A8586441C76917500DA7BC0 /* Rounds.swift in Sources */,
 				9A8586361C73775700DA7BC0 /* ChartDefaults.swift in Sources */,
 				9A85863C1C73952700DA7BC0 /* BSRoundDetailScore.swift in Sources */,
 				9A8586221C72F2FD00DA7BC0 /* AppDelegate.swift in Sources */,
@@ -339,6 +343,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = BoxingScoreCard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jamaalsedayao.BoxingScoreCard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -355,6 +360,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = BoxingScoreCard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jamaalsedayao.BoxingScoreCard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
