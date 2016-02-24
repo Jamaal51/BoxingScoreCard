@@ -77,7 +77,7 @@ class BSRoundDetailScore: UIViewController {
     }
 
     func rotateLandscape(){
-        let value = UIInterfaceOrientation.LandscapeLeft.rawValue
+        let value = UIInterfaceOrientation.LandscapeRight.rawValue
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
     }
     

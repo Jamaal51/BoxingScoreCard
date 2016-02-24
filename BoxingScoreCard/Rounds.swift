@@ -9,8 +9,16 @@
 import Foundation
 
 class Rounds {
-    let value: Int = 0
-    var redScore: Int = 0
-    var blueScore: Int = 0
-    var winner: String
+    var value: Int
+    var redScore: Int?
+    var blueScore: Int?
+    var winnerOfRound: String?
+    var close: Bool?
+    
+    init(value: Int){
+    self.value = value
+//    self.redScore = redScore
+//    self.blueScore = blueScore
+    }
 }
+

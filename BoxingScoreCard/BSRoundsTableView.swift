@@ -8,16 +8,32 @@
 
 import UIKit
 
-class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSource, RedFighterSelectedDelegate, BlueFighterSelectedDelegate{
     
     let tapRec = UITapGestureRecognizer()
     let tapRec2 = UITapGestureRecognizer()
     
-    @IBOutlet var blueCornerView: UIView!
+    var passedData: String?
+    
+    //redCornerView
     @IBOutlet var redCornerView: UIView!
+    @IBOutlet var redNameLabel: UILabel!
+    @IBOutlet var redDivisionLabel: UILabel!
+    @IBOutlet var redStanceLabel: UILabel!
+    @IBOutlet var redCornerImageView: UIImageView!
+    
+    //blueCornerView
+    @IBOutlet var blueCornerView: UIView!
+    @IBOutlet var blueNameLabel: UILabel!
+    @IBOutlet var blueCornerImageView: UIImageView!
+    @IBOutlet var blueDivisionLabel: UILabel!
+    @IBOutlet var blueStanceLabel: UILabel!
+    
     @IBOutlet var tableView: UITableView!
     
-    var rounds = 1
+    var redCornerFighter: Fighter?
+    var blueCornerFighter: Fighter?
+    var roundsArray = [Rounds]()
     
     func displayUI(){
         redCornerView.layer.borderWidth = 1.0
@@ -29,40 +45,95 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         displayUI()
+        assignTapGestures()
+        initializeRounds()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
-        redCornerView.addGestureRecognizer(tapRec)
-        redCornerView.userInteractionEnabled = true
-        tapRec.addTarget(self, action: "tappedView")
-        
-        blueCornerView.addGestureRecognizer(tapRec2)
-        blueCornerView.userInteractionEnabled = true
-        tapRec2.addTarget(self, action: "tappedView")
-        
         self.navigationController?.navigationBarHidden = true
+        
     }
     
     override func viewDidAppear(animated: Bool) {
-        rounds += 1
+        super.viewDidAppear(true)
+        if self.passedData != nil {
+        print("Data Passed: \(self.passedData!)")
+        }
     }
     
-    func tappedView(){
-
-        let tapAlert = UIAlertController(title: "Tapped", message: "You just tapped the tap view", preferredStyle: UIAlertControllerStyle.Alert)
-        tapAlert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: nil))
-        self.presentViewController(tapAlert, animated: true, completion: nil)
+    func initializeRounds(){
+        let round1 = Rounds(value: 1)
+        let round2 = Rounds(value: 2)
+        let round3 = Rounds(value: 3)
+        let round4 = Rounds(value: 4)
+        let round5 = Rounds(value: 5)
+        let round6 = Rounds(value: 6)
+        let round7 = Rounds(value: 7)
+        let round8 = Rounds(value: 8)
+        let round9 = Rounds(value: 9)
+        let round10 = Rounds(value: 10)
+        let roundeleven = Rounds(value: 11)
+        let roundtwelve = Rounds(value: 12)
+        
+        roundsArray = [round1,round2, round3, round4, round5, round6, round7, round8, round9, round10, roundeleven,roundtwelve]
+        
+        roundeleven.redScore = 10
+        roundeleven.blueScore = 8
+        
+        round2.redScore = 10
+        round2.blueScore = 9
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func assignTapGestures(){
+        
+        redCornerView.addGestureRecognizer(tapRec)
+        redCornerView.userInteractionEnabled = true
+        tapRec.addTarget(self, action: "tappedRedView")
+        
+        blueCornerView.addGestureRecognizer(tapRec2)
+        blueCornerView.userInteractionEnabled = true
+        tapRec2.addTarget(self, action: "tappedBlueView")
+    }
+    
+    func userDidSelectRedFighter(redFighter: Fighter) {
+        print(redFighter.firstName!)
+        redCornerFighter = redFighter
+        redNameLabel.text = "\(redFighter.firstName!) \"\(redFighter.nickName!)\" \(redFighter.lastName!)"
+        redDivisionLabel.text = "Division: \(redFighter.weightDivision!)"
+        redStanceLabel.text = "Stance: \(redFighter.stance!)"
+        let image: UIImage = UIImage(named: redFighter.imageString!)!
+        redCornerImageView.image = image
+    }
+    
+    func userDidSelectBlueFighter(blueFighter: Fighter) {
+        print(blueFighter.firstName!)
+        
+        blueCornerFighter = blueFighter
+        blueNameLabel.text = "\(blueFighter.firstName!) \"\(blueFighter.nickName!)\" \(blueFighter.lastName!)"
+        blueDivisionLabel.text = "Division: \(blueFighter.weightDivision!)"
+        blueStanceLabel.text = "Stance:\(blueFighter.stance!)"
+        let image: UIImage = UIImage(named: blueFighter.imageString!)!
+        blueCornerImageView.image = image
+    }
+    
+    func tappedRedView(){
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationVC = storyboard.instantiateViewControllerWithIdentifier("fighterListTBVID") as! BSFighterListTableViewController
+        destinationVC.delegateRed = self
+        self.presentViewController(destinationVC, animated: true, completion: nil)
+        
+    }
+    func tappedBlueView(){
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationVC = storyboard.instantiateViewControllerWithIdentifier("fighterListTBVID") as! BSFighterListTableViewController
+        destinationVC.delegateBlue = self
+        self.presentViewController(destinationVC, animated: true, completion: nil)
+        
     }
     
     @IBAction func endFightButtonTapped(sender: AnyObject) {
-        
         print("button works!")
-        
         
     }
     //MARK: - TableView
@@ -72,17 +143,32 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.rounds + 1
+        return self.roundsArray.count + 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         
-        if indexPath.row < self.rounds{
+        if indexPath.row < self.roundsArray.count{
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath:indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("roundsIdentifier", forIndexPath:indexPath) as! CustomRoundsTableViewCell
+            
+        let round = roundsArray[indexPath.row]
+            
+            
+//        if round.redScore != nil && round.blueScore != nil{
+//                cell.selectionStyle = UITableViewCellSelectionStyle.None
+//                cell.userInteractionEnabled = false
+//                cell.roundNumberLabel.enabled = false
+//                cell.blueScoreLabel.enabled = false
+//                cell.redScoreLabel.enabled = false  
+//            }
         
-        cell.textLabel?.text = "Round \(rounds)"
-       
+        cell.roundNumberLabel?.text = "Round \(round.value)"
+        
+        if round.redScore != nil && round.blueScore != nil{
+        cell.redScoreLabel?.text = String(round.redScore!)
+        cell.blueScoreLabel?.text = String(round.blueScore!)
+            }
         return cell
             
         } else {
@@ -91,6 +177,6 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         return cell
         }
 
-}
+    }
 }
 

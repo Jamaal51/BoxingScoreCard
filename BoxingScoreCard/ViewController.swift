@@ -1,4 +1,6 @@
 //
+//  Fight Summary View Controller
+//
 //  ViewController.swift
 //  BoxingScoreCard
 //
@@ -54,6 +56,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func finishRoundTapped(sender: UIButton) {
+        //self.navigationController!.popToRootViewControllerAnimated(true)
+        
+        let rootView = self.navigationController!.viewControllers.first as! BSRoundsTableView
+        rootView.passedData = "DATA PASS WORKS!"
         self.navigationController!.popToRootViewControllerAnimated(true)
         
     }
