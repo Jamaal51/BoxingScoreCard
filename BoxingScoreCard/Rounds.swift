@@ -10,10 +10,14 @@ import Foundation
 
 class Rounds {
     var value: Int
-    var redScore: Int?
-    var blueScore: Int?
+    var redScore: Int = 0
+    var blueScore: Int = 0
     var winnerOfRound: String?
     var close: Bool?
+    var redKnockdown: Int = 0
+    var blueKnockdown: Int = 0
+    var redPointDed: Int = 0
+    var bluePointDed: Int = 0
     
     init(value: Int){
     self.value = value

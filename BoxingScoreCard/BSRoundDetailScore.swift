@@ -9,6 +9,11 @@
 import UIKit
 
 class BSRoundDetailScore: UIViewController {
+    //Fighters
+    var redFighter: Fighter?
+    var blueFighter: Fighter?
+    var currentRound: Rounds?
+    
     //RoundTimer
     var timer = NSTimer()
     @IBOutlet var roundTimerLabel: UILabel!
@@ -27,30 +32,53 @@ class BSRoundDetailScore: UIViewController {
     @IBOutlet var blueDefenseButton: UIButton!
     @IBOutlet var blueEffAggButton: UIButton!
     @IBOutlet var blueRingGenButton: UIButton!
+    //otherbuttons
+    @IBOutlet var blueKnockdownButton: UIButton!
+    @IBOutlet var bluePointDedButton: UIButton!
+    @IBOutlet var redKnockdownButton: UIButton!
+    @IBOutlet var redPointDedButton: UIButton!
+    //viewLabels
+    @IBOutlet var redNameLabel: UILabel!
+    @IBOutlet var redKnockdownLabel: UILabel!
+    @IBOutlet var redPointDedLabel: UILabel!
+    @IBOutlet var blueNameLabel: UILabel!
+    @IBOutlet var blueKnockdownLabel: UILabel!
+    @IBOutlet var bluePointDedLabel: UILabel!
+
     //Testlabels
-    @IBOutlet var blueCleanPunchLabel: UILabel!
-    @IBOutlet var blueDefenseLabel: UILabel!
-    @IBOutlet var blueEffAggLabel: UILabel!
-    @IBOutlet var blueRingGenLabel: UILabel!
-    @IBOutlet var redCleanPunchLabel: UILabel!
-    @IBOutlet var redDefenseLabel: UILabel!
-    @IBOutlet var redEffAggLabel: UILabel!
-    @IBOutlet var redRingGenLabel: UILabel!
+//    @IBOutlet var blueCleanPunchLabel: UILabel!
+//    @IBOutlet var blueDefenseLabel: UILabel!
+//    @IBOutlet var blueEffAggLabel: UILabel!
+//    @IBOutlet var blueRingGenLabel: UILabel!
+//    @IBOutlet var redCleanPunchLabel: UILabel!
+//    @IBOutlet var redDefenseLabel: UILabel!
+//    @IBOutlet var redEffAggLabel: UILabel!
+//    @IBOutlet var redRingGenLabel: UILabel!
     //Score Variables
     var redCleanPunchScore = 0.0
     var redDefenseScore = 0.0
     var redEffAggScore = 0.0
     var redRingGenScore = 0.0
+    var redKnockdowns = 0
+    var redPointDed = 0
+    
     var blueCleanPunchScore = 0.0
     var blueDefenseScore = 0.0
     var blueEffAggScore = 0.0
     var blueRingGenScore = 0.0
+    var blueKnockdowns = 0
+    var bluePointDed = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         rotateLandscape()
         displayUI()
         startTimer()
+        
+        print(redFighter?.firstName)
+        print(blueFighter?.firstName)
+        print(currentRound!.value)
     }
     override func shouldAutorotate() -> Bool {
         return true
@@ -82,50 +110,80 @@ class BSRoundDetailScore: UIViewController {
     }
     
     func displayUI(){
-        redCornerButtonsView.layer.borderWidth = 3.0
-        blueCornerButtonsView.layer.borderWidth = 3.0
-        redCornerButtonsView.layer.borderColor = (UIColor.blackColor()).CGColor
-        blueCornerButtonsView.layer.borderColor = (UIColor.blackColor()).CGColor
         
-        redCornerTopView.layer.borderWidth = 2.0
-        blueCornerTopView.layer.borderWidth = 2.0
-        redCornerTopView.layer.borderColor = (UIColor.redColor()).CGColor
-        blueCornerTopView.layer.borderColor = (UIColor.blueColor()).CGColor
+        redDefenseButton.layer.borderWidth = 2.0
+        redDefenseButton.layer.borderColor = UIColor.blackColor().CGColor
+        redCleanPunchButton.layer.borderWidth = 2.0
+        redCleanPunchButton.layer.borderColor = UIColor.blackColor().CGColor
+        redEffAggButton.layer.borderWidth = 2.0
+        redEffAggButton.layer.borderColor = UIColor.blackColor().CGColor
+        redRingGenButton.layer.borderWidth = 2.0
+        redRingGenButton.layer.borderColor = UIColor.blackColor().CGColor
+        
+        blueDefenseButton.layer.borderWidth = 2.0
+        blueDefenseButton.layer.borderColor = UIColor.blackColor().CGColor
+        blueCleanPunchButton.layer.borderWidth = 2.0
+        blueCleanPunchButton.layer.borderColor = UIColor.blackColor().CGColor
+        blueEffAggButton.layer.borderWidth = 2.0
+        blueEffAggButton.layer.borderColor = UIColor.blackColor().CGColor
+        blueRingGenButton.layer.borderWidth = 2.0
+        blueRingGenButton.layer.borderColor = UIColor.blackColor().CGColor
     }
     
     
     @IBAction func redCornerButtonTapped(sender: AnyObject) {
         if redCleanPunchButton == sender as! UIButton{
             redCleanPunchScore += 1
-            redCleanPunchLabel.text = String(redCleanPunchScore)
+            //redCleanPunchLabel.text = String(redCleanPunchScore)
         } else if redDefenseButton == sender as! UIButton{
             redDefenseScore += 1
-            redDefenseLabel.text = String(redDefenseScore)
+            //redDefenseLabel.text = String(redDefenseScore)
         } else if redEffAggButton == sender as! UIButton{
             redEffAggScore += 1
-            redEffAggLabel.text = String(redEffAggScore)
+            //redEffAggLabel.text = String(redEffAggScore)
         } else if redRingGenButton == sender as! UIButton{
             redRingGenScore += 1
-            redRingGenLabel.text = String(redRingGenScore)
+            //redRingGenLabel.text = String(redRingGenScore)
         }
         //print("red button works")
     }
     @IBAction func blueCornerButtonTapped(sender: AnyObject) {
         if blueCleanPunchButton == sender as! UIButton{
             blueCleanPunchScore += 1
-            blueCleanPunchLabel.text = String(blueCleanPunchScore)
+            //blueCleanPunchLabel.text = String(blueCleanPunchScore)
         } else if blueDefenseButton == sender as! UIButton{
             blueDefenseScore += 1
-            blueDefenseLabel.text = String(blueDefenseScore)
+            //blueDefenseLabel.text = String(blueDefenseScore)
         } else if blueEffAggButton == sender as! UIButton{
             blueEffAggScore += 1
-            blueEffAggLabel.text = String(blueEffAggScore)
+            //blueEffAggLabel.text = String(blueEffAggScore)
         } else if blueRingGenButton == sender as! UIButton{
             blueRingGenScore += 1
-            blueRingGenLabel.text = String(blueRingGenScore)
+            //blueRingGenLabel.text = String(blueRingGenScore)
         }
         //print("blue button works")
     }
+    
+    @IBAction func knockdownButtonTapped(sender: UIButton) {
+        if redKnockdownButton == sender {
+            print("Red Knockdown")
+        } else if blueKnockdownButton == sender {
+            print("Blue Knockdown")
+        }
+        
+    }
+    
+    @IBAction func pointDedTapped(sender: AnyObject) {
+        if redPointDedButton == sender as! UIButton {
+            print("red point ded")
+        } else if bluePointDedButton == sender as! UIButton {
+            print("blue point ded")
+        }
+
+        
+    }
+    
+    
     
     func pushToRoundSummary(){
         performSegueWithIdentifier("pushToSummary", sender: nil)

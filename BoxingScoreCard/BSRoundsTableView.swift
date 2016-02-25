@@ -13,7 +13,10 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
     let tapRec = UITapGestureRecognizer()
     let tapRec2 = UITapGestureRecognizer()
     
+    @IBOutlet var topViewLabel: UILabel!
     var passedData: String?
+    
+    var currentRound:Rounds?
     
     //redCornerView
     @IBOutlet var redCornerView: UIView!
@@ -51,6 +54,13 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         self.tableView.dataSource = self
         self.navigationController?.navigationBarHidden = true
         
+        self.tableView.userInteractionEnabled = false
+        self.tableView.backgroundColor = UIColor.grayColor()
+        
+        topViewLabel.text = "Choose Fighters"
+        
+        //currentRound = roundsArray[0]
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -76,11 +86,9 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         
         roundsArray = [round1,round2, round3, round4, round5, round6, round7, round8, round9, round10, roundeleven,roundtwelve]
         
-        roundeleven.redScore = 10
-        roundeleven.blueScore = 8
+//        round1.redScore = 10
+//        round1.blueScore = 9
         
-        round2.redScore = 10
-        round2.blueScore = 9
     }
     
     func assignTapGestures(){
@@ -102,6 +110,11 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         redStanceLabel.text = "Stance: \(redFighter.stance!)"
         let image: UIImage = UIImage(named: redFighter.imageString!)!
         redCornerImageView.image = image
+        
+        if blueCornerFighter != nil {
+            tableView.userInteractionEnabled = true
+            topViewLabel.text = "\(redCornerFighter!.lastName) Vs. \(blueCornerFighter!.lastName)"
+        }
     }
     
     func userDidSelectBlueFighter(blueFighter: Fighter) {
@@ -113,6 +126,11 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         blueStanceLabel.text = "Stance:\(blueFighter.stance!)"
         let image: UIImage = UIImage(named: blueFighter.imageString!)!
         blueCornerImageView.image = image
+        
+        if redCornerFighter != nil {
+            tableView.userInteractionEnabled = true
+            topViewLabel.text = "\(redCornerFighter!.lastName!) Vs. \(blueCornerFighter!.lastName!)"
+        }
     }
     
     func tappedRedView(){
@@ -131,11 +149,7 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         self.presentViewController(destinationVC, animated: true, completion: nil)
         
     }
-    
-    @IBAction func endFightButtonTapped(sender: AnyObject) {
-        print("button works!")
-        
-    }
+
     //MARK: - TableView
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -143,40 +157,69 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.roundsArray.count + 1
+        return self.roundsArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+//        
+//        var cell = tableView.dequeueReusableCellWithIdentifier("roundsIdentifier", forIndexPath:indexPath) as? CustomRoundsTableViewCell
+//        
+//        
+//        let round = roundsArray[indexPath.row]
+//        
+//        cell!.roundNumberLabel?.text = "Round \(round.value)"
+//        
+//        if cell == nil {
+//        cell!.redScoreLabel?.text = String(round.redScore)
+//        cell!.blueScoreLabel?.text = String(round.blueScore)
+//        }
+//        
+//        
+//        if round.redScore != 0 && round.blueScore != 0{
+//            cell!.selectionStyle = UITableViewCellSelectionStyle.None
+//            cell!.userInteractionEnabled = false
+//            cell!.roundNumberLabel.enabled = false
+//            cell!.blueScoreLabel.enabled = false
+//            cell!.redScoreLabel.enabled = false
+//        }
+//    
+//        return cell!
         
-        if indexPath.row < self.roundsArray.count{
+        guard let cell = tableView.dequeueReusableCellWithIdentifier("roundsIdentifier", forIndexPath:indexPath) as? CustomRoundsTableViewCell else {
+            return UITableViewCell()
+        }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("roundsIdentifier", forIndexPath:indexPath) as! CustomRoundsTableViewCell
-            
         let round = roundsArray[indexPath.row]
-            
-            
-//        if round.redScore != nil && round.blueScore != nil{
-//                cell.selectionStyle = UITableViewCellSelectionStyle.None
-//                cell.userInteractionEnabled = false
-//                cell.roundNumberLabel.enabled = false
-//                cell.blueScoreLabel.enabled = false
-//                cell.redScoreLabel.enabled = false  
-//            }
         
         cell.roundNumberLabel?.text = "Round \(round.value)"
+        cell.redScoreLabel?.text = String(round.redScore)
+        cell.blueScoreLabel?.text = String(round.blueScore)
         
-        if round.redScore != nil && round.blueScore != nil{
-        cell.redScoreLabel?.text = String(round.redScore!)
-        cell.blueScoreLabel?.text = String(round.blueScore!)
-            }
-        return cell
-            
-        } else {
+        let hasScore = round.redScore != 0 && round.blueScore != 0
+        cell.selectionStyle = hasScore ? .None : .Default
+        cell.userInteractionEnabled = !hasScore
+        cell.roundNumberLabel.enabled = !hasScore
+        cell.blueScoreLabel.enabled = !hasScore
+        cell.redScoreLabel.enabled = !hasScore
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("endFightIdentifier", forIndexPath: indexPath)
         return cell
-        }
-
+        
     }
-}
+    
+    //MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "passToRoundDetail"{
+            let destinationVC = segue.destinationViewController as! BSRoundDetailScore
+            destinationVC.redFighter = redCornerFighter
+            destinationVC.blueFighter = blueCornerFighter
+            
+            let indexPath = tableView.indexPathForSelectedRow
+            let passRound = roundsArray[(indexPath?.row)!]
+            destinationVC.currentRound = passRound
+            print("PassedRound:\(passRound)")
+            print("CALLED SEGUE")
+        }
+    }
 
+}
