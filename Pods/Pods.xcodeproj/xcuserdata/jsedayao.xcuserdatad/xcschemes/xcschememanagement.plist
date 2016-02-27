@@ -14,15 +14,45 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>WYMaterialButton-WYMaterialButton.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>WYMaterialButton.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>pop.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1FAD0CB1737F76B7370B84E669F981F2</key>
+		<key>3A6770C0FE4E4FD5D69CE316A9AD9DF3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8FB76EDE63928835837823C7C4146C1B</key>
+		<key>4A42F28849AA393BFB8FC5B6310AC2E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5E97DE71D31A89A83EEEFD6F55B93E47</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9128D362CBD92D0C70BFE183EE812064</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>93FE07D02361990812172CF90D18FBFA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

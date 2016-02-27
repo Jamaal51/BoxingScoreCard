@@ -14,6 +14,7 @@ class BSRoundDetailScore: UIViewController {
     var blueFighter: Fighter?
     var currentRound: Rounds?
     
+    @IBOutlet var roundNumberLabel: UILabel!
     //RoundTimer
     var timer = NSTimer()
     @IBOutlet var roundTimerLabel: UILabel!
@@ -76,9 +77,14 @@ class BSRoundDetailScore: UIViewController {
         displayUI()
         startTimer()
         
-        print(redFighter?.firstName)
-        print(blueFighter?.firstName)
-        print(currentRound!.value)
+        redNameLabel.text = (redFighter!.lastName!)
+        blueNameLabel.text = (blueFighter!.lastName!)
+        roundNumberLabel.text = "Round: \(currentRound!.value)"
+        redKnockdownLabel.text = "Knockdowns: \(redKnockdowns)"
+        redPointDedLabel.text = "Point Deduction: \(redPointDed)"
+        blueKnockdownLabel.text = "Knockdowns: \(blueKnockdowns)"
+        bluePointDedLabel.text = "Point Deduction: \(bluePointDed)"
+        
     }
     override func shouldAutorotate() -> Bool {
         return true
@@ -182,8 +188,6 @@ class BSRoundDetailScore: UIViewController {
 
         
     }
-    
-    
     
     func pushToRoundSummary(){
         performSegueWithIdentifier("pushToSummary", sender: nil)

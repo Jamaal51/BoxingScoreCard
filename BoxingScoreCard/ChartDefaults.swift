@@ -14,7 +14,7 @@ struct ExamplesDefaults {
     static var chartSettings: ChartSettings {
         return self.iPhoneChartSettings
     }
-//
+
 //    private static var iPadChartSettings: ChartSettings {
 //        let chartSettings = ChartSettings()
 //        chartSettings.leading = 20

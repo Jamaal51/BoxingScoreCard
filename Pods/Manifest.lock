@@ -1,12 +1,18 @@
 PODS:
+  - pop (1.0.9)
   - SwiftCharts (0.3)
+  - WYMaterialButton (1.2.1):
+    - pop (~> 1.0)
 
 DEPENDENCIES:
   - SwiftCharts (~> 0.3)
+  - WYMaterialButton (~> 1.2)
 
 SPEC CHECKSUMS:
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   SwiftCharts: c66a449d58f9c811c467f865a47b1b6136b49499
+  WYMaterialButton: 4ad7428ab02c3e89f97f04482a84b57170008d91
 
-PODFILE CHECKSUM: 63aa43e6b6cea1c5bd6b9e257d3cff72bfcbdb82
+PODFILE CHECKSUM: 42d62693a4c1986fa3e0c6520aa0bac4397c2e62
 
 COCOAPODS: 1.0.0.beta.3

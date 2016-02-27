@@ -23,6 +23,7 @@
 		9AD159B21C7CAC6200F5E1DC /* BSFighterListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD159B11C7CAC6200F5E1DC /* BSFighterListTableViewController.swift */; };
 		9AD159B61C7CBC0A00F5E1DC /* CustomFighterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD159B51C7CBC0A00F5E1DC /* CustomFighterTableViewCell.swift */; };
 		9AD159B81C7D5F1100F5E1DC /* CustomRoundsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD159B71C7D5F1100F5E1DC /* CustomRoundsTableViewCell.swift */; };
+		9AF85FED1C80F79B004524DC /* ButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF85FEC1C80F79B004524DC /* ButtonsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		9AD159B11C7CAC6200F5E1DC /* BSFighterListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSFighterListTableViewController.swift; sourceTree = "<group>"; };
 		9AD159B51C7CBC0A00F5E1DC /* CustomFighterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFighterTableViewCell.swift; sourceTree = "<group>"; };
 		9AD159B71C7D5F1100F5E1DC /* CustomRoundsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRoundsTableViewCell.swift; sourceTree = "<group>"; };
+		9AF85FEC1C80F79B004524DC /* ButtonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsViewController.swift; sourceTree = "<group>"; };
 		E4C61936BA15AEA0AA8352DF /* Pods_BoxingScoreCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoxingScoreCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -89,6 +91,7 @@
 				9AD159B31C7CAD3300F5E1DC /* ChartViewController */,
 				9AD159B41C7CAD4E00F5E1DC /* Classes */,
 				9A8586371C7394A700DA7BC0 /* Main.storyboard */,
+				9AF85FEC1C80F79B004524DC /* ButtonsViewController.swift */,
 				9A8586281C72F2FD00DA7BC0 /* Assets.xcassets */,
 				9A85862A1C72F2FD00DA7BC0 /* LaunchScreen.storyboard */,
 				9A85862D1C72F2FD00DA7BC0 /* Info.plist */,
@@ -262,6 +265,7 @@
 				9AD159B21C7CAC6200F5E1DC /* BSFighterListTableViewController.swift in Sources */,
 				9AD159B61C7CBC0A00F5E1DC /* CustomFighterTableViewCell.swift in Sources */,
 				9AD159B81C7D5F1100F5E1DC /* CustomRoundsTableViewCell.swift in Sources */,
+				9AF85FED1C80F79B004524DC /* ButtonsViewController.swift in Sources */,
 				9A8586751C791C7700DA7BC0 /* Fighter.swift in Sources */,
 				9A8586731C791A5600DA7BC0 /* Fight.swift in Sources */,
 				9A8586241C72F2FD00DA7BC0 /* ViewController.swift in Sources */,

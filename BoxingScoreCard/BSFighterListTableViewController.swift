@@ -26,7 +26,6 @@ class BSFighterListTableViewController: UITableViewController {
         
         self.navigationController?.navigationBarHidden = false
         self.navigationController?.navigationBar.topItem?.title = "Choose Your Fighter"
-
         initiateData()
     
     }
