@@ -20,6 +20,8 @@ class BSRoundDetailScore: UIViewController {
     @IBOutlet var roundTimerLabel: UILabel!
     var roundTime = 40.0
     //UIView
+    @IBOutlet var redImageView: UIImageView!
+    @IBOutlet var blueImageView: UIImageView!
     @IBOutlet var redCornerButtonsView: UIView!
     @IBOutlet var blueCornerButtonsView: UIView!
     @IBOutlet var redCornerTopView: UIView!
@@ -46,15 +48,6 @@ class BSRoundDetailScore: UIViewController {
     @IBOutlet var blueKnockdownLabel: UILabel!
     @IBOutlet var bluePointDedLabel: UILabel!
 
-    //Testlabels
-//    @IBOutlet var blueCleanPunchLabel: UILabel!
-//    @IBOutlet var blueDefenseLabel: UILabel!
-//    @IBOutlet var blueEffAggLabel: UILabel!
-//    @IBOutlet var blueRingGenLabel: UILabel!
-//    @IBOutlet var redCleanPunchLabel: UILabel!
-//    @IBOutlet var redDefenseLabel: UILabel!
-//    @IBOutlet var redEffAggLabel: UILabel!
-//    @IBOutlet var redRingGenLabel: UILabel!
     //Score Variables
     var redCleanPunchScore = 0.0
     var redDefenseScore = 0.0
@@ -80,11 +73,10 @@ class BSRoundDetailScore: UIViewController {
         redNameLabel.text = (redFighter!.lastName!)
         blueNameLabel.text = (blueFighter!.lastName!)
         roundNumberLabel.text = "Round: \(currentRound!.value)"
-        redKnockdownLabel.text = "Knockdowns: \(redKnockdowns)"
-        redPointDedLabel.text = "Point Deduction: \(redPointDed)"
-        blueKnockdownLabel.text = "Knockdowns: \(blueKnockdowns)"
-        bluePointDedLabel.text = "Point Deduction: \(bluePointDed)"
         
+        redImageView.image = UIImage(named: (redFighter?.imageString)!)
+        blueImageView.image = UIImage(named: (blueFighter?.imageString)!)
+            
     }
     override func shouldAutorotate() -> Bool {
         return true
