@@ -110,22 +110,22 @@ class BSRoundDetailScore: UIViewController {
     func displayUI(){
         
         redDefenseButton.layer.borderWidth = 2.0
-        redDefenseButton.layer.borderColor = UIColor.blackColor().CGColor
+        redDefenseButton.layer.borderColor = UIColor.redColor().CGColor
         redCleanPunchButton.layer.borderWidth = 2.0
-        redCleanPunchButton.layer.borderColor = UIColor.blackColor().CGColor
+        redCleanPunchButton.layer.borderColor = UIColor.redColor().CGColor
         redEffAggButton.layer.borderWidth = 2.0
-        redEffAggButton.layer.borderColor = UIColor.blackColor().CGColor
+        redEffAggButton.layer.borderColor = UIColor.redColor().CGColor
         redRingGenButton.layer.borderWidth = 2.0
-        redRingGenButton.layer.borderColor = UIColor.blackColor().CGColor
+        redRingGenButton.layer.borderColor = UIColor.redColor().CGColor
         
         blueDefenseButton.layer.borderWidth = 2.0
-        blueDefenseButton.layer.borderColor = UIColor.blackColor().CGColor
+        blueDefenseButton.layer.borderColor = UIColor.blueColor().CGColor
         blueCleanPunchButton.layer.borderWidth = 2.0
-        blueCleanPunchButton.layer.borderColor = UIColor.blackColor().CGColor
+        blueCleanPunchButton.layer.borderColor = UIColor.blueColor().CGColor
         blueEffAggButton.layer.borderWidth = 2.0
-        blueEffAggButton.layer.borderColor = UIColor.blackColor().CGColor
+        blueEffAggButton.layer.borderColor = UIColor.blueColor().CGColor
         blueRingGenButton.layer.borderWidth = 2.0
-        blueRingGenButton.layer.borderColor = UIColor.blackColor().CGColor
+        blueRingGenButton.layer.borderColor = UIColor.blueColor().CGColor
     }
     
     
