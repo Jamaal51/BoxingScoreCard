@@ -533,9 +533,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="guF-dq-5et">
                                         <rect key="frame" x="0.0" y="0.0" width="290" height="40"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="redFighter" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoH-MF-xiE">
-                                                <rect key="frame" x="86" y="7" width="118" height="25"/>
-                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="redFighter" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoH-MF-xiE">
+                                                <rect key="frame" x="4" y="10" width="282" height="20"/>
+                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="16"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -543,30 +543,41 @@
                                         <color key="backgroundColor" red="1" green="0.12323552140000001" blue="0.040272688170000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="XoH-MF-xiE" firstAttribute="centerX" secondItem="guF-dq-5et" secondAttribute="centerX" id="0LF-8R-P6Q"/>
+                                            <constraint firstAttribute="trailing" secondItem="XoH-MF-xiE" secondAttribute="trailing" constant="4" id="2GB-WM-uUv"/>
                                             <constraint firstAttribute="height" constant="40" id="es4-u5-FqT"/>
+                                            <constraint firstItem="XoH-MF-xiE" firstAttribute="leading" secondItem="guF-dq-5et" secondAttribute="leading" constant="4" id="f8w-09-job"/>
                                             <constraint firstItem="XoH-MF-xiE" firstAttribute="centerY" secondItem="guF-dq-5et" secondAttribute="centerY" id="rKh-Go-L5Y"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9AG-oL-gbX">
                                         <rect key="frame" x="290" y="0.0" width="290" height="40"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="blueFighter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6V-xz-NsY">
-                                                <rect key="frame" x="81" y="7" width="129" height="25"/>
-                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="blueFighter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6V-xz-NsY">
+                                                <rect key="frame" x="4" y="10" width="282" height="20"/>
+                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="16"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.39665554219999999" green="0.67090325760000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="q6V-xz-NsY" firstAttribute="leading" secondItem="9AG-oL-gbX" secondAttribute="leading" constant="4" id="87K-rM-kl4"/>
+                                            <constraint firstItem="q6V-xz-NsY" firstAttribute="centerX" secondItem="9AG-oL-gbX" secondAttribute="centerX" id="BZw-ak-0Pk"/>
+                                            <constraint firstAttribute="trailing" secondItem="q6V-xz-NsY" secondAttribute="trailing" constant="4" id="KMB-lD-iZz"/>
+                                            <constraint firstItem="q6V-xz-NsY" firstAttribute="leading" secondItem="9AG-oL-gbX" secondAttribute="leading" constant="4" id="MHW-Jb-jL6"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Mn4-Ln-LOo"/>
                                             <constraint firstItem="q6V-xz-NsY" firstAttribute="centerY" secondItem="9AG-oL-gbX" secondAttribute="centerY" id="Pq3-rI-7a5"/>
                                             <constraint firstAttribute="height" constant="40" id="gzq-pQ-3ge"/>
                                             <constraint firstItem="q6V-xz-NsY" firstAttribute="centerX" secondItem="9AG-oL-gbX" secondAttribute="centerX" id="jAh-q9-R2g"/>
+                                            <constraint firstAttribute="trailing" secondItem="q6V-xz-NsY" secondAttribute="trailing" constant="4" id="jXh-2e-epS"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="Mn4-Ln-LOo"/>
+                                                <exclude reference="BZw-ak-0Pk"/>
+                                                <exclude reference="MHW-Jb-jL6"/>
+                                                <exclude reference="jAh-q9-R2g"/>
+                                                <exclude reference="jXh-2e-epS"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -625,14 +636,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9i6-Gm-916">
-                                        <rect key="frame" x="190" y="186" width="200" height="29"/>
+                                        <rect key="frame" x="165" y="186" width="250" height="29"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="k42-3B-r2s"/>
+                                            <constraint firstAttribute="width" constant="250" id="k42-3B-r2s"/>
                                         </constraints>
                                         <segments>
                                             <segment title="First"/>
                                             <segment title="Second"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="segmentControlAction:" destination="au0-ui-oKt" eventType="valueChanged" id="lvO-U7-LxE"/>
+                                        </connections>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT ROUND WINNER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Q4-BR-zuT">
                                         <rect key="frame" x="193" y="155" width="195" height="21"/>
@@ -641,19 +655,19 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzc-50-bTt">
-                                        <rect key="frame" x="128" y="189" width="42" height="21"/>
+                                        <rect key="frame" x="103" y="189" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwS-rV-cjO">
-                                        <rect key="frame" x="410" y="189" width="42" height="21"/>
+                                        <rect key="frame" x="435" y="189" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="A0l-6y-YpE">
-                                        <rect key="frame" x="356" y="228" width="42" height="25"/>
+                                        <rect key="frame" x="356" y="228" width="51" height="31"/>
                                         <color key="onTintColor" red="0.50553205079999997" green="0.68280901849999998" blue="0.60922411840000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Close Round?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hT5-BW-REs">

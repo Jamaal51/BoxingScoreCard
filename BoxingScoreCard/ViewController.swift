@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     
     @IBOutlet var myView: UIView!
     
+    var redFighter: Fighter!
+    var blueFighter: Fighter!
+    
     //Points Variables
     var redPunch = Double()
     var redDefense = Double()
@@ -25,6 +28,11 @@ class ViewController: UIViewController {
     var blueDefense = Double()
     var blueEffAgg = Double()
     var blueRingGen = Double()
+    
+    var blueKnockedDown = 0
+    var redKnockedDown = 0
+    var redPointDed = 0
+    var bluePointDed = 0
     
     //Chart Variables
     private var chart: Chart?
@@ -54,8 +62,14 @@ class ViewController: UIViewController {
         
         myView.layer.borderWidth = 0.5
         myView.layer.borderColor = (UIColor.blackColor()).CGColor
-        
         rotatePortrait()
+        calculateSuggestedScore()
+       // populateLabelsAtLoad()
+
+        roundWinnerSelector.setTitle(redFighter.lastName, forSegmentAtIndex: 0)
+        roundWinnerSelector.setTitle(blueFighter.lastName, forSegmentAtIndex: 1)
+        roundWinnerSelector.tintColor = UIColor.darkGrayColor()
+        
         self.showChart(horizontal: false)
         if let chart = self.chart {
             let dirSelector = DirSelector(frame: CGRectMake(0, chart.frame.origin.y + chart.frame.size.height, self.myView.frame.size.width, self.dirSelectorHeight), controller: self)
@@ -69,27 +83,91 @@ class ViewController: UIViewController {
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
     }
     
+    func populateLabelsAtLoad(){
+        redFighterLabel.text = self.redFighter!.lastName
+        blueFighterLabel.text = self.blueFighter!.lastName
+        redKnockdownLabel.text = String(blueKnockedDown)
+        blueKnockdownLabel.text = String(redKnockedDown)
+        redPointsDedLabel.text = String(redPointDed)
+        bluePointsDedLabel.text = String(bluePointDed)
+        redFighterSuggScore.text = String(redFighterScore)
+        blueSuggScoreLabel.text = String(blueFighterScore)
+        redScoreLabel.text = String(redFighterScore)
+        blueScoreLabel.text = String(blueFighterScore)
+        
+        if roundWinner?.lastName == redFighter.lastName || roundWinner?.lastName == nil {
+          roundWinnerSelector.selectedSegmentIndex = 0
+        } else {
+            roundWinnerSelector.selectedSegmentIndex = 1
+        }
+    }
+    
     func calculateSuggestedScore(){
         let redPointsTotal = redPunch + redDefense + redEffAgg + redRingGen
         let bluePointsTotal = bluePunch + blueDefense + blueEffAgg + blueRingGen
         
-        if redPointsTotal > bluePointsTotal {
-            redFighterScore = 10
-            blueFighterScore = 9
-        } else if bluePointsTotal > redPointsTotal {
+        //if no knockdowns
+        if redKnockedDown == 0 && blueKnockedDown == 0 {
+            if redPointsTotal > bluePointsTotal {
+                redFighterScore = 10
+                blueFighterScore = 9
+                roundWinner = redFighter
+            } else if bluePointsTotal > redPointsTotal {
+                blueFighterScore = 10
+                redFighterScore = 9
+                roundWinner = blueFighter
+            } else {
+                blueFighterScore = 10
+                redFighterScore = 10
+            }
+        }
+    
+        //if blue wins by knockdown
+        if redKnockedDown >= 1 && blueKnockedDown == 0 {
+            roundWinner = blueFighter
             blueFighterScore = 10
-            redFighterScore = 9
-        } else {
-            blueFighterScore = 10
-            redFighterScore = 10
+            redFighterScore = 9 - redKnockedDown
         }
         
+        //if red wins by knockdown
+        if blueKnockedDown >= 1 && redKnockedDown == 0 {
+            roundWinner = redFighter
+            redFighterScore = 10
+            blueFighterScore = 9 - blueKnockedDown
+        }
         
+        //if both red and blue have knockdowns
+        if blueKnockedDown >= 1 && redKnockedDown >= 1 {
+            if blueKnockedDown == redKnockedDown{
+                redFighterScore = 10
+                blueFighterScore = 10
+            } else if blueKnockedDown > redKnockedDown {
+                roundWinner = redFighter
+                redFighterScore = 10
+                let knockDownDifference = blueKnockedDown - redKnockedDown
+                blueFighterScore = 9 - knockDownDifference
+            } else if redKnockedDown > blueKnockedDown {
+                roundWinner = blueFighter
+                blueFighterScore = 10
+                let knockDownDifference = redKnockedDown - blueKnockedDown
+                redFighterScore = 9 - knockDownDifference
+            }
+            
+        }
         
+        redFighterScore -= redPointDed
+        blueFighterScore -= bluePointDed
+        
+        populateLabelsAtLoad()
+    }
+    
+    @IBAction func segmentControlAction(sender: UISegmentedControl) {
+        
+    
         
         
     }
-    
+
 //MARK: SegueToRoot
     
     @IBAction func finishRoundTapped(sender: UIButton) {

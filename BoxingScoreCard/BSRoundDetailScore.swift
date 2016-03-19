@@ -18,7 +18,7 @@ class BSRoundDetailScore: UIViewController {
     //RoundTimer
     var timer = NSTimer()
     @IBOutlet var roundTimerLabel: UILabel!
-    var roundTime = 40.0
+    var roundTime = 10.0
     //UIView
     @IBOutlet var redImageView: UIImageView!
     @IBOutlet var blueImageView: UIImageView!
@@ -183,6 +183,9 @@ class BSRoundDetailScore: UIViewController {
         
         if segue.identifier == "pushToSummary" {
             let destinationVC = segue.destinationViewController as! ViewController
+            
+            destinationVC.redFighter = self.redFighter
+            destinationVC.blueFighter = self.blueFighter    
             destinationVC.redPunch = self.redCleanPunchScore
             destinationVC.redDefense = self.redDefenseScore
             destinationVC.redEffAgg = self.redEffAggScore
@@ -191,6 +194,10 @@ class BSRoundDetailScore: UIViewController {
             destinationVC.blueDefense = self.blueDefenseScore
             destinationVC.blueEffAgg = self.blueEffAggScore
             destinationVC.blueRingGen = self.blueRingGenScore
+            destinationVC.blueKnockedDown = self.blueKnockedDown
+            destinationVC.redKnockedDown = self.redKnockedDown
+            destinationVC.redPointDed = self.redPointDed
+            destinationVC.bluePointDed = self.bluePointDed
         }
         
     }
