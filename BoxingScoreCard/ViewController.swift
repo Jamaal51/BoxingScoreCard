@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     @IBOutlet var myView: UIView!
     
-    //PointsVariables
+    //Points Variables
     var redPunch = Double()
     var redDefense = Double()
     var redEffAgg = Double()
@@ -26,14 +26,28 @@ class ViewController: UIViewController {
     var blueEffAgg = Double()
     var blueRingGen = Double()
     
+    //Chart Variables
     private var chart: Chart?
-    
     private let dirSelectorHeight: CGFloat = 30
     
-    func rotatePortrait(){
-        let value = UIInterfaceOrientation.Portrait.rawValue
-        UIDevice.currentDevice().setValue(value, forKey: "orientation")
-    }
+    //Fight Summary Variables
+    @IBOutlet var redFighterLabel: UILabel!
+    @IBOutlet var redKnockdownLabel: UILabel!
+    @IBOutlet var redPointsDedLabel: UILabel!
+    @IBOutlet var redFighterSuggScore: UILabel!
+    @IBOutlet var blueFighterLabel: UILabel!
+    @IBOutlet var blueKnockdownLabel: UILabel!
+    @IBOutlet var bluePointsDedLabel: UILabel!
+    @IBOutlet var blueSuggScoreLabel: UILabel!
+    var redFighterScore = Int()
+    var blueFighterScore = Int()
+    
+    //Select Round Winner
+    @IBOutlet var redScoreLabel: UILabel!
+    @IBOutlet var blueScoreLabel: UILabel!
+    @IBOutlet var roundWinnerSelector: UISegmentedControl!
+    @IBOutlet var closeRoundSwitch: UISwitch!
+    var roundWinner: Fighter?
     
     override func viewDidLoad() {
             super.viewDidLoad()
@@ -49,11 +63,34 @@ class ViewController: UIViewController {
         }
             
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func rotatePortrait(){
+        let value = UIInterfaceOrientation.Portrait.rawValue
+        UIDevice.currentDevice().setValue(value, forKey: "orientation")
     }
+    
+    func calculateSuggestedScore(){
+        let redPointsTotal = redPunch + redDefense + redEffAgg + redRingGen
+        let bluePointsTotal = bluePunch + blueDefense + blueEffAgg + blueRingGen
+        
+        if redPointsTotal > bluePointsTotal {
+            redFighterScore = 10
+            blueFighterScore = 9
+        } else if bluePointsTotal > redPointsTotal {
+            blueFighterScore = 10
+            redFighterScore = 9
+        } else {
+            blueFighterScore = 10
+            redFighterScore = 10
+        }
+        
+        
+        
+        
+        
+    }
+    
+//MARK: SegueToRoot
     
     @IBAction func finishRoundTapped(sender: UIButton) {
         //self.navigationController!.popToRootViewControllerAnimated(true)
@@ -63,6 +100,8 @@ class ViewController: UIViewController {
         self.navigationController!.popToRootViewControllerAnimated(true)
         
     }
+
+//MARK: Initiate Graph
 
     func barsChart(horizontal horizontal: Bool) -> Chart {
         
@@ -206,6 +245,14 @@ class ViewController: UIViewController {
         
         
     }
+    
+    
+    
+// MARK: Fight Summary Bottom View
+    
+    
+    
+    
     
 }
 

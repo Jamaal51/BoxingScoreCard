@@ -53,29 +53,21 @@ class BSRoundDetailScore: UIViewController {
     var redDefenseScore = 0.0
     var redEffAggScore = 0.0
     var redRingGenScore = 0.0
-    var redKnockdowns = 0
-    var redPointDed = 0
-    
     var blueCleanPunchScore = 0.0
     var blueDefenseScore = 0.0
     var blueEffAggScore = 0.0
     var blueRingGenScore = 0.0
-    var blueKnockdowns = 0
-    var bluePointDed = 0
     
+    var redKnockedDown = 0
+    var redPointDed = 0
+    var blueKnockedDown = 0
+    var bluePointDed = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         rotateLandscape()
         displayUI()
         startTimer()
-        
-        redNameLabel.text = (redFighter!.lastName!)
-        blueNameLabel.text = (blueFighter!.lastName!)
-        roundNumberLabel.text = "Round: \(currentRound!.value)"
-        
-        redImageView.image = UIImage(named: (redFighter?.imageString)!)
-        blueImageView.image = UIImage(named: (blueFighter?.imageString)!)
             
     }
     override func shouldAutorotate() -> Bool {
@@ -109,6 +101,13 @@ class BSRoundDetailScore: UIViewController {
     
     func displayUI(){
         
+        redNameLabel.text = (redFighter!.lastName!)
+        blueNameLabel.text = (blueFighter!.lastName!)
+        roundNumberLabel.text = "Round: \(currentRound!.value)"
+        
+        redImageView.image = UIImage(named: (redFighter?.imageString)!)
+        blueImageView.image = UIImage(named: (blueFighter?.imageString)!)
+        
         redDefenseButton.layer.borderWidth = 2.0
         redDefenseButton.layer.borderColor = UIColor.redColor().CGColor
         redCleanPunchButton.layer.borderWidth = 2.0
@@ -132,52 +131,45 @@ class BSRoundDetailScore: UIViewController {
     @IBAction func redCornerButtonTapped(sender: AnyObject) {
         if redCleanPunchButton == sender as! UIButton{
             redCleanPunchScore += 1
-            //redCleanPunchLabel.text = String(redCleanPunchScore)
         } else if redDefenseButton == sender as! UIButton{
             redDefenseScore += 1
-            //redDefenseLabel.text = String(redDefenseScore)
         } else if redEffAggButton == sender as! UIButton{
             redEffAggScore += 1
-            //redEffAggLabel.text = String(redEffAggScore)
         } else if redRingGenButton == sender as! UIButton{
             redRingGenScore += 1
-            //redRingGenLabel.text = String(redRingGenScore)
         }
-        //print("red button works")
     }
     @IBAction func blueCornerButtonTapped(sender: AnyObject) {
         if blueCleanPunchButton == sender as! UIButton{
             blueCleanPunchScore += 1
-            //blueCleanPunchLabel.text = String(blueCleanPunchScore)
         } else if blueDefenseButton == sender as! UIButton{
             blueDefenseScore += 1
-            //blueDefenseLabel.text = String(blueDefenseScore)
         } else if blueEffAggButton == sender as! UIButton{
             blueEffAggScore += 1
-            //blueEffAggLabel.text = String(blueEffAggScore)
         } else if blueRingGenButton == sender as! UIButton{
             blueRingGenScore += 1
-            //blueRingGenLabel.text = String(blueRingGenScore)
         }
-        //print("blue button works")
     }
     
     @IBAction func knockdownButtonTapped(sender: UIButton) {
         if redKnockdownButton == sender {
-            print("Red Knockdown")
+            blueKnockedDown += 1
+            print("Blue Knocked Down: \(blueKnockedDown) times")
         } else if blueKnockdownButton == sender {
-            print("Blue Knockdown")
+            redKnockedDown += 1
+            print("Red Knocked Down: \(redKnockedDown) times")
         }
         
     }
     
     @IBAction func pointDedTapped(sender: AnyObject) {
         if redPointDedButton == sender as! UIButton {
-            print("red point ded")
+            redPointDed += 1
+            print("Red Point Deducted: \(redPointDed) points")
         } else if bluePointDedButton == sender as! UIButton {
-            print("blue point ded")
+            bluePointDed += 1
+            print("Blue Point Deducted: \(bluePointDed)")
         }
-
         
     }
     

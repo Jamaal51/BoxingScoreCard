@@ -746,7 +746,19 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="blueFighterLabel" destination="q6V-xz-NsY" id="a8D-VP-ydR"/>
+                        <outlet property="blueKnockdownLabel" destination="apd-4a-ZmT" id="dJq-gX-QSj"/>
+                        <outlet property="bluePointsDedLabel" destination="cqS-En-g2F" id="O3W-Et-hMQ"/>
+                        <outlet property="blueScoreLabel" destination="zwS-rV-cjO" id="SJQ-2E-CDc"/>
+                        <outlet property="blueSuggScoreLabel" destination="FJL-ja-PHq" id="idt-tb-RQ1"/>
+                        <outlet property="closeRoundSwitch" destination="A0l-6y-YpE" id="Hlc-QZ-wQr"/>
                         <outlet property="myView" destination="ngF-w5-ezW" id="B9o-Cc-Ddm"/>
+                        <outlet property="redFighterLabel" destination="XoH-MF-xiE" id="YBC-T4-1f5"/>
+                        <outlet property="redFighterSuggScore" destination="kcf-Y7-HsD" id="NWe-ub-y79"/>
+                        <outlet property="redKnockdownLabel" destination="E5B-B6-8bP" id="I4N-xM-Xb7"/>
+                        <outlet property="redPointsDedLabel" destination="nQk-AB-O0L" id="uBJ-gM-qit"/>
+                        <outlet property="redScoreLabel" destination="hzc-50-bTt" id="5I3-pK-eFg"/>
+                        <outlet property="roundWinnerSelector" destination="9i6-Gm-916" id="gUc-dZ-aPQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bd9-SN-VD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
