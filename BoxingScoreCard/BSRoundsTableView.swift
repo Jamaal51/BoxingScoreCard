@@ -16,8 +16,6 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
     @IBOutlet var topViewLabel: UILabel!
     var passedData: String?
     
-    var currentRound:Rounds?
-    
     //redCornerView
     @IBOutlet var redCornerView: UIView!
     @IBOutlet var redNameLabel: UILabel!
@@ -37,6 +35,7 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
     var redCornerFighter: Fighter?
     var blueCornerFighter: Fighter?
     var roundsArray = [Rounds]()
+    var currentRound:Rounds?
     
     func displayUI(){
         redCornerView.layer.borderWidth = 1.0
@@ -50,21 +49,50 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         displayUI()
         assignTapGestures()
         initializeRounds()
+        checkCurrentRound()
+        
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: "testNotification", name: "UserLoggedIn", object: nil)
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.navigationController?.navigationBarHidden = true
-        
         self.tableView.userInteractionEnabled = false
         self.tableView.backgroundColor = UIColor.grayColor()
-        
         topViewLabel.text = "Choose Fighters"
         
-        //currentRound = roundsArray[0]
         
+    }
+    
+    func checkCurrentRound() {
+        print("Check Current Round")
+       
+        while (currentRound == nil){
+            for round in roundsArray {
+                if round.roundScored == false {
+                    currentRound = round
+                    print("Current round is Round \(currentRound!.value)")
+                    break
+                }
+            }
+        }
+        
+    }
+    
+    func testNotification(){
+        //currentRound += 1
+        
+       // currentRound = roundsArray[++]
+        
+        print("Notification works!")
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
+        
+        tableView.reloadData()
+        checkCurrentRound()
+        
         if self.passedData != nil {
         print("Data Passed: \(self.passedData!)")
         }
@@ -86,8 +114,7 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         
         roundsArray = [round1,round2, round3, round4, round5, round6, round7, round8, round9, round10, roundeleven,roundtwelve]
         
-//        round1.redScore = 10
-//        round1.blueScore = 9
+        currentRound = roundsArray[0]
         
     }
     

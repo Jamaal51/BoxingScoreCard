@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     
     var redFighter: Fighter!
     var blueFighter: Fighter!
+    var currentRound: Rounds!
     
     //Points Variables
     var redPunch = Double()
@@ -60,9 +61,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
             super.viewDidLoad()
         
+        print("Current Round is \(currentRound.value)")
+        
+        rotatePortrait()
         myView.layer.borderWidth = 0.5
         myView.layer.borderColor = (UIColor.blackColor()).CGColor
-        rotatePortrait()
+
         calculateSuggestedScore()
        // populateLabelsAtLoad()
 
@@ -75,7 +79,7 @@ class ViewController: UIViewController {
             let dirSelector = DirSelector(frame: CGRectMake(0, chart.frame.origin.y + chart.frame.size.height, self.myView.frame.size.width, self.dirSelectorHeight), controller: self)
             self.myView.addSubview(dirSelector)
         }
-            
+        
     }
     
     func rotatePortrait(){
@@ -175,7 +179,17 @@ class ViewController: UIViewController {
         
         let rootView = self.navigationController!.viewControllers.first as! BSRoundsTableView
         rootView.passedData = "DATA PASS WORKS!"
+        
+        rootView.currentRound!.redScore = redFighterScore
+        rootView.currentRound!.blueScore = blueFighterScore
+        
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.postNotificationName("UserLoggedIn", object: nil)
+        
+        //nc.addObserver(self, selector: "testNotification", name: "UserLoggedIn", object: nil)
+        
         self.navigationController!.popToRootViewControllerAnimated(true)
+        
         
     }
 

@@ -12,7 +12,7 @@ class BSRoundDetailScore: UIViewController {
     //Fighters
     var redFighter: Fighter?
     var blueFighter: Fighter?
-    var currentRound: Rounds?
+    var currentRound: Rounds!
     
     @IBOutlet var roundNumberLabel: UILabel!
     //RoundTimer
@@ -198,6 +198,7 @@ class BSRoundDetailScore: UIViewController {
             destinationVC.redKnockedDown = self.redKnockedDown
             destinationVC.redPointDed = self.redPointDed
             destinationVC.bluePointDed = self.bluePointDed
+            destinationVC.currentRound = self.currentRound
         }
         
     }

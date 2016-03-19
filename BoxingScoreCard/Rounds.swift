@@ -14,14 +14,15 @@ class Rounds {
     var blueScore: Int = 0
     var winnerOfRound: String?
     var close: Bool?
+    var roundScored = false
     var redKnockdown: Int = 0
     var blueKnockdown: Int = 0
     var redPointDed: Int = 0
     var bluePointDed: Int = 0
     
-    init(value: Int){
+    init(value: Int) {
     self.value = value
-//    self.redScore = redScore
+//    self.roundScored = roundScored
 //    self.blueScore = blueScore
     }
 }
