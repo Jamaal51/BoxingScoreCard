@@ -145,7 +145,7 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
     func userDidSelectRedFighter(redFighter: Fighter) {
         print(redFighter.firstName!)
         redCornerFighter = redFighter
-        redNameLabel.text = "\(redFighter.firstName!) \"\(redFighter.nickName!)\" \(redFighter.lastName!)"
+        redNameLabel.text = "\(redFighter.firstName!) \(redFighter.lastName!)"
         redDivisionLabel.text = "Division: \(redFighter.weightDivision!)"
         redStanceLabel.text = "Stance: \(redFighter.stance!)"
         let image: UIImage = UIImage(named: redFighter.imageString!)!
@@ -161,7 +161,7 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         print(blueFighter.firstName!)
         
         blueCornerFighter = blueFighter
-        blueNameLabel.text = "\(blueFighter.firstName!) \"\(blueFighter.nickName!)\" \(blueFighter.lastName!)"
+        blueNameLabel.text = "\(blueFighter.firstName!) \(blueFighter.lastName!)"
         blueDivisionLabel.text = "Division: \(blueFighter.weightDivision!)"
         blueStanceLabel.text = "Stance:\(blueFighter.stance!)"
         let image: UIImage = UIImage(named: blueFighter.imageString!)!
@@ -227,7 +227,7 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         if indexPath.section == 0 {
             
             let round = usedRoundsArray[indexPath.row]
-            cell.roundNumberLabel?.text = "Round \(round.value)"
+            cell.roundNumberLabel?.text = "\(round.value)"
             cell.redScoreLabel?.text = String(round.redScore)
             cell.blueScoreLabel?.text = String(round.blueScore)
 

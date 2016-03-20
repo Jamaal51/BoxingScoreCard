@@ -32,19 +32,28 @@ class BSFighterListTableViewController: UITableViewController {
 
     func initiateData(){
         
-        let fighterCharles = Fighter(firstName: "Charles", lastName: "Kang", weight: "147", height: "5'6", wins:12, losses: 0, imageString: "charleskang", weightDivision:"Welterweight", stance: "Southpaw", country:"USA/S.Korea")
-        fighterCharles.knockouts = 8
-        fighterCharles.nickName = "The King"
+        let rayLeonard = Fighter(firstName: "Ray", lastName: "Leonard", weight: "147", height: "5'10", wins:36, losses: 3, imageString: "rayLeonard", weightDivision:"Welterweight", stance: "Orthodox", country:"USA")
+        rayLeonard.knockouts = 25
+        //rayLeonard.nickName = "Sugar"
     
         
-        let fighterBereket = Fighter(firstName: "Bereket", lastName: "Ghebremedhin", weight: "145", height: "5'10", wins: 13, losses: 2, imageString: "bereket", weightDivision:"Welterweight", stance: "Orthodox", country: "Eritrea")
-        fighterBereket.knockouts = 12
-        fighterBereket.nickName = "Breaks Stuff"
+        let marvinHagler = Fighter(firstName: "Marvin", lastName: "Hagler", weight: "160", height: "5'9", wins: 62, losses: 3, imageString: "marvinHagler", weightDivision:"Middleweight", stance: "SouthPaw", country: "USA")
+        marvinHagler.knockouts = 52
+        marvinHagler.nickName = "Marvelous"
         
-        fightersArray.append(fighterBereket)
-        fightersArray.append(fighterCharles)
+        let thomasHearns = Fighter(firstName: "Thomas", lastName: "Hearns", weight: "154", height: "6'1", wins: 61, losses: 5, imageString: "thomasHearns", weightDivision: "Super Welterweight", stance: "Orthodox", country: "USA")
+        thomasHearns.knockouts = 48
+        thomasHearns.nickName = "Hitman"
         
-        //print(fighterCharles.firstName)
+        let robertoDuran = Fighter(firstName: "Roberto", lastName: "Duran", weight: "147", height: "5'7", wins: 103, losses: 16, imageString: "robertoDuran", weightDivision: "Welterweight", stance: "Orthodox", country: "Panama")
+        robertoDuran.knockouts = 70
+        robertoDuran.nickName = "Manos De Piedra"
+        
+        fightersArray.append(marvinHagler)
+        fightersArray.append(rayLeonard)
+        fightersArray.append(thomasHearns)
+        fightersArray.append(robertoDuran)
+        
     }
     
     // MARK: - Table view data source
@@ -91,7 +100,14 @@ class BSFighterListTableViewController: UITableViewController {
         
         let fighter = fightersArray[indexPath.row] as Fighter!
         
-        cell.nameLabel.text = "\(fighter.firstName!) \"\(fighter.nickName!)\" \(fighter.lastName!)"
+        cell.nameLabel.text = "\(fighter.firstName!) \(fighter.lastName!)"
+        
+        if (fighter.nickName != nil){
+            cell.nicknameLabel.text = "Alias: \(fighter.nickName!)"
+        } else {
+            cell.nicknameLabel.text = "Alias: n/a"
+        }
+        
         cell.weightLabel.text = "\(fighter.weight!) lbs."
         cell.heightLabel.text = "Ht: \(fighter.height!)"
         cell.recordLabel.text = "\(fighter.wins!) W - \(fighter.losses!) L, \(fighter.knockouts!)KOs"

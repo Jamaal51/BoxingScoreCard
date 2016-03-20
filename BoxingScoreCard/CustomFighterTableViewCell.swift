@@ -11,6 +11,7 @@ import UIKit
 class CustomFighterTableViewCell: UITableViewCell {
     @IBOutlet var fighterImage: UIImageView!
     @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var nicknameLabel: UILabel!
     @IBOutlet var heightLabel: UILabel!
     @IBOutlet var weightLabel: UILabel!
     @IBOutlet var recordLabel: UILabel!
@@ -22,9 +23,9 @@ class CustomFighterTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        self.fighterImage.layer.borderWidth = 1.0
-        self.fighterImage.layer.borderColor = UIColor.blackColor().CGColor
-        self.fighterImage.layer.cornerRadius = 5.0
+//        self.fighterImage.layer.borderWidth = 1.0
+//        self.fighterImage.layer.borderColor = UIColor.blackColor().CGColor
+//        self.fighterImage.layer.cornerRadius = 5.0
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
