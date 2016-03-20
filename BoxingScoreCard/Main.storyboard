@@ -39,7 +39,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8X6-ye-2jC" userLabel="RedView">
                                         <rect key="frame" x="0.0" y="55" width="300" height="195"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dyr-80-fAX">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dyr-80-fAX">
                                                 <rect key="frame" x="2" y="2" width="296" height="191"/>
                                                 <color key="backgroundColor" red="0.84739977904040398" green="0.22320271957166654" blue="0.14664024422115704" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>
@@ -115,7 +115,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RnF-eR-Ich" userLabel="BlueView">
                                         <rect key="frame" x="300" y="55" width="300" height="195"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ibN-Y9-h4R">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ibN-Y9-h4R">
                                                 <rect key="frame" x="2" y="2" width="296" height="191"/>
                                                 <color key="backgroundColor" red="0.34986696272728107" green="0.54537898387540484" blue="0.76012073863636365" alpha="1" colorSpace="calibratedRGB"/>
                                             </imageView>
@@ -222,21 +222,21 @@
                                 <rect key="frame" x="0.0" y="270" width="600" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="roundsIdentifier" rowHeight="69" id="gBs-jp-4P5" customClass="CustomRoundsTableViewCell" customModule="BoxingScoreCard" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="69"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="roundsIdentifier" rowHeight="85" id="gBs-jp-4P5" customClass="CustomRoundsTableViewCell" customModule="BoxingScoreCard" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gBs-jp-4P5" id="M1O-dj-NFG">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKW-cS-t6o">
-                                                    <rect key="frame" x="275" y="0.0" width="50" height="68"/>
+                                                    <rect key="frame" x="280" y="2" width="40" height="80"/>
                                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Gt8-fp-ai1"/>
-                                                        <constraint firstAttribute="width" constant="50" id="Pp1-6G-bfm"/>
+                                                        <constraint firstAttribute="width" constant="40" id="Pp1-6G-bfm"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AlNile-Bold" family="Al Nile" pointSize="32"/>
+                                                    <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Bold" family="Bodoni 72" pointSize="32"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -245,46 +245,78 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="red" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJH-oq-f61">
-                                                    <rect key="frame" x="209" y="21" width="26" height="26"/>
-                                                    <color key="backgroundColor" red="1" green="0.12323552140000001" blue="0.040272688170000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RoK-1T-h3i" userLabel="RedView">
+                                                    <rect key="frame" x="2" y="2" width="40" height="80"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJH-oq-f61">
+                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="80"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="TzF-N9-IB1"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="25"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="TzF-N9-IB1"/>
+                                                                </mask>
+                                                            </variation>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.85909880049999998" green="0.85909880049999998" blue="0.85909880049999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="TzF-N9-IB1"/>
+                                                        <constraint firstAttribute="width" constant="40" id="6sc-cn-Knf"/>
+                                                        <constraint firstAttribute="trailing" secondItem="xJH-oq-f61" secondAttribute="trailing" id="VOx-28-Zvg"/>
+                                                        <constraint firstItem="xJH-oq-f61" firstAttribute="top" secondItem="RoK-1T-h3i" secondAttribute="top" id="ZP4-Es-Qal"/>
+                                                        <constraint firstAttribute="bottom" secondItem="xJH-oq-f61" secondAttribute="bottom" id="aNr-Ug-IHS"/>
+                                                        <constraint firstItem="xJH-oq-f61" firstAttribute="leading" secondItem="RoK-1T-h3i" secondAttribute="leading" id="mYc-fs-UPF"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="TzF-N9-IB1"/>
-                                                        </mask>
-                                                    </variation>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="blue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nD-Rf-8f8">
-                                                    <rect key="frame" x="365" y="21" width="32" height="26"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value=""/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                            <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKj-bt-cvj" userLabel="BlueView">
+                                                    <rect key="frame" x="558" y="2" width="40" height="80"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nD-Rf-8f8">
+                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="80"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="AYs-CM-3k1"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="25"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="AYs-CM-3k1"/>
+                                                                </mask>
+                                                            </variation>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.85909880049999998" green="0.85909880049999998" blue="0.85909880049999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="AYs-CM-3k1"/>
+                                                        <constraint firstAttribute="trailing" secondItem="5nD-Rf-8f8" secondAttribute="trailing" id="C7c-n8-x27"/>
+                                                        <constraint firstAttribute="width" constant="40" id="LZB-vy-DoR"/>
+                                                        <constraint firstAttribute="bottom" secondItem="5nD-Rf-8f8" secondAttribute="bottom" id="Pi8-hl-uy9"/>
+                                                        <constraint firstItem="5nD-Rf-8f8" firstAttribute="top" secondItem="oKj-bt-cvj" secondAttribute="top" id="QfH-XE-cTT"/>
+                                                        <constraint firstItem="5nD-Rf-8f8" firstAttribute="leading" secondItem="oKj-bt-cvj" secondAttribute="leading" id="gF8-Qr-75c"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="AYs-CM-3k1"/>
-                                                        </mask>
-                                                    </variation>
-                                                </label>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="YKW-cS-t6o" firstAttribute="centerY" secondItem="M1O-dj-NFG" secondAttribute="centerY" id="1VD-ar-zcj"/>
                                                 <constraint firstItem="YKW-cS-t6o" firstAttribute="centerX" secondItem="M1O-dj-NFG" secondAttribute="centerX" id="1q6-ML-lkq"/>
-                                                <constraint firstItem="5nD-Rf-8f8" firstAttribute="leading" secondItem="YKW-cS-t6o" secondAttribute="trailing" constant="40" id="5Bb-NP-VeI"/>
-                                                <constraint firstAttribute="bottom" secondItem="YKW-cS-t6o" secondAttribute="bottom" id="Cgf-dr-3lb"/>
-                                                <constraint firstItem="YKW-cS-t6o" firstAttribute="leading" secondItem="xJH-oq-f61" secondAttribute="trailing" constant="40" id="GvY-E7-Vmd"/>
-                                                <constraint firstItem="5nD-Rf-8f8" firstAttribute="centerY" secondItem="YKW-cS-t6o" secondAttribute="centerY" id="HK9-hO-Y20"/>
-                                                <constraint firstItem="YKW-cS-t6o" firstAttribute="top" secondItem="M1O-dj-NFG" secondAttribute="top" id="Qea-4f-1Cf"/>
-                                                <constraint firstItem="xJH-oq-f61" firstAttribute="centerY" secondItem="YKW-cS-t6o" secondAttribute="centerY" id="mht-Ws-Lu5"/>
+                                                <constraint firstAttribute="bottom" secondItem="RoK-1T-h3i" secondAttribute="bottom" constant="2" id="4Me-v9-8jq"/>
+                                                <constraint firstAttribute="bottom" secondItem="YKW-cS-t6o" secondAttribute="bottom" constant="2" id="Cgf-dr-3lb"/>
+                                                <constraint firstAttribute="trailing" secondItem="oKj-bt-cvj" secondAttribute="trailing" constant="2" id="JtY-4Q-pLL"/>
+                                                <constraint firstItem="oKj-bt-cvj" firstAttribute="top" secondItem="M1O-dj-NFG" secondAttribute="top" constant="2" id="KtM-Ob-cEJ"/>
+                                                <constraint firstItem="YKW-cS-t6o" firstAttribute="top" secondItem="M1O-dj-NFG" secondAttribute="top" constant="2" id="Qea-4f-1Cf"/>
+                                                <constraint firstAttribute="bottom" secondItem="oKj-bt-cvj" secondAttribute="bottom" constant="2" id="Uyl-ss-4Nl"/>
+                                                <constraint firstItem="RoK-1T-h3i" firstAttribute="leading" secondItem="M1O-dj-NFG" secondAttribute="leading" constant="2" id="fRe-0d-JbL"/>
+                                                <constraint firstItem="RoK-1T-h3i" firstAttribute="top" secondItem="M1O-dj-NFG" secondAttribute="top" constant="2" id="qZo-ij-OtL"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

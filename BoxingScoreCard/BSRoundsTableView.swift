@@ -169,7 +169,7 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         
         if redCornerFighter != nil {
             tableView.userInteractionEnabled = true
-            topViewLabel.text = "\(redCornerFighter!.lastName!) Vs. \(blueCornerFighter!.lastName!)"
+            topViewLabel.text = "\(redCornerFighter!.lastName!) vs. \(blueCornerFighter!.lastName!)"
         }
     }
     
