@@ -179,9 +179,9 @@ class ViewController: UIViewController {
         
         let rootView = self.navigationController!.viewControllers.first as! BSRoundsTableView
         rootView.passedData = "DATA PASS WORKS!"
-        
-        rootView.currentRound!.redScore = redFighterScore
-        rootView.currentRound!.blueScore = blueFighterScore
+    
+        rootView.currentRound.redScore = redFighterScore
+        rootView.currentRound.blueScore = blueFighterScore
         
         let nc = NSNotificationCenter.defaultCenter()
         nc.postNotificationName("UserLoggedIn", object: nil)

@@ -35,7 +35,8 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
     var redCornerFighter: Fighter?
     var blueCornerFighter: Fighter?
     var roundsArray = [Rounds]()
-    var currentRound:Rounds?
+    var currentRound:Rounds!
+    var finishedRoundsArray = [Rounds]()
     
     func displayUI(){
         redCornerView.layer.borderWidth = 1.0
@@ -49,7 +50,7 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         displayUI()
         assignTapGestures()
         initializeRounds()
-        checkCurrentRound()
+        //checkCurrentRound()
         
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: "testNotification", name: "UserLoggedIn", object: nil)
@@ -64,25 +65,30 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         
     }
     
-    func checkCurrentRound() {
-        print("Check Current Round")
-       
-        while (currentRound == nil){
-            for round in roundsArray {
-                if round.roundScored == false {
-                    currentRound = round
-                    print("Current round is Round \(currentRound!.value)")
-                    break
-                }
-            }
-        }
-        
-    }
+//    func checkCurrentRound() {
+//        print("Check Current Round")
+//       
+//        while (currentRound == nil){
+//            for round in roundsArray {
+//                if round.roundScored == false {
+//                    currentRound = round
+//                    print("Current round is Round \(currentRound!.value)")
+//                    break
+//                }
+//            }
+//        }
+//        
+//    }
     
     func testNotification(){
-        //currentRound += 1
         
-       // currentRound = roundsArray[++]
+        let lastRound = roundsArray.removeAtIndex(0)
+        
+        finishedRoundsArray.append(lastRound)
+        
+        currentRound = roundsArray[0]
+        
+        print("Current Round is now \(currentRound.value)")
         
         print("Notification works!")
     }
@@ -91,7 +97,7 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         super.viewDidAppear(true)
         
         tableView.reloadData()
-        checkCurrentRound()
+        //checkCurrentRound()
         
         if self.passedData != nil {
         print("Data Passed: \(self.passedData!)")
@@ -180,54 +186,67 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
     //MARK: - TableView
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.roundsArray.count
+        if section == 0 {
+            return self.finishedRoundsArray.count
+        } else {
+            return self.roundsArray.count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-//        
-//        var cell = tableView.dequeueReusableCellWithIdentifier("roundsIdentifier", forIndexPath:indexPath) as? CustomRoundsTableViewCell
-//        
-//        
-//        let round = roundsArray[indexPath.row]
-//        
-//        cell!.roundNumberLabel?.text = "Round \(round.value)"
-//        
-//        if cell == nil {
-//        cell!.redScoreLabel?.text = String(round.redScore)
-//        cell!.blueScoreLabel?.text = String(round.blueScore)
-//        }
-//        
-//        
-//        if round.redScore != 0 && round.blueScore != 0{
-//            cell!.selectionStyle = UITableViewCellSelectionStyle.None
-//            cell!.userInteractionEnabled = false
-//            cell!.roundNumberLabel.enabled = false
-//            cell!.blueScoreLabel.enabled = false
-//            cell!.redScoreLabel.enabled = false
-//        }
-//    
-//        return cell!
         
         guard let cell = tableView.dequeueReusableCellWithIdentifier("roundsIdentifier", forIndexPath:indexPath) as? CustomRoundsTableViewCell else {
             return UITableViewCell()
         }
         
-        let round = roundsArray[indexPath.row]
+//        let round = roundsArray[indexPath.row]
+//        
+//        cell.roundNumberLabel?.text = "Round \(round.value)"
+//        cell.redScoreLabel?.text = String(round.redScore)
+//        cell.blueScoreLabel?.text = String(round.blueScore)
+//        
+//        let hasScore = round.redScore != 0 && round.blueScore != 0
+//        cell.selectionStyle = hasScore ? .None : .Default
+//        cell.userInteractionEnabled = !hasScore
+//        cell.roundNumberLabel.enabled = !hasScore
+//        cell.blueScoreLabel.enabled = !hasScore
+//        cell.redScoreLabel.enabled = !hasScore
         
-        cell.roundNumberLabel?.text = "Round \(round.value)"
-        cell.redScoreLabel?.text = String(round.redScore)
-        cell.blueScoreLabel?.text = String(round.blueScore)
+        if indexPath.section == 0 {
+            
+            let round = finishedRoundsArray[indexPath.row]
+            cell.roundNumberLabel?.text = "Round \(round.value)"
+            cell.redScoreLabel?.text = String(round.redScore)
+            cell.blueScoreLabel?.text = String(round.blueScore)
+
+            let hasScore = round.redScore != 0 && round.blueScore != 0
+            cell.selectionStyle = hasScore ? .None : .Default
+            cell.userInteractionEnabled = !hasScore
+            cell.roundNumberLabel.enabled = !hasScore
+            cell.blueScoreLabel.enabled = !hasScore
+            cell.redScoreLabel.enabled = !hasScore
         
-        let hasScore = round.redScore != 0 && round.blueScore != 0
-        cell.selectionStyle = hasScore ? .None : .Default
-        cell.userInteractionEnabled = !hasScore
-        cell.roundNumberLabel.enabled = !hasScore
-        cell.blueScoreLabel.enabled = !hasScore
-        cell.redScoreLabel.enabled = !hasScore
+            
+        } else {
+            
+            let round = roundsArray[indexPath.row]
+            
+            cell.roundNumberLabel?.text = "Round \(round.value)"
+            cell.redScoreLabel?.text = String(round.redScore)
+            cell.blueScoreLabel?.text = String(round.blueScore)
+            
+            let hasScore = round.redScore != 0 && round.blueScore != 0
+            cell.selectionStyle = hasScore ? .None : .Default
+            cell.userInteractionEnabled = !hasScore
+            cell.roundNumberLabel.enabled = !hasScore
+            cell.blueScoreLabel.enabled = !hasScore
+            cell.redScoreLabel.enabled = !hasScore
+
+        }
         
         return cell
         
