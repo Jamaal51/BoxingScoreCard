@@ -184,7 +184,7 @@ class ViewController: UIViewController {
         rootView.currentRound.blueScore = blueFighterScore
         
         let nc = NSNotificationCenter.defaultCenter()
-        nc.postNotificationName("UserLoggedIn", object: nil)
+        nc.postNotificationName("sendBackData", object: nil)
         
         //nc.addObserver(self, selector: "testNotification", name: "UserLoggedIn", object: nil)
         

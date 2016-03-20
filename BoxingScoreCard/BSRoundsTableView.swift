@@ -36,7 +36,7 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
     var blueCornerFighter: Fighter?
     var roundsArray = [Rounds]()
     var currentRound:Rounds!
-    var finishedRoundsArray = [Rounds]()
+    var usedRoundsArray = [Rounds]()
     
     func displayUI(){
         redCornerView.layer.borderWidth = 1.0
@@ -52,8 +52,15 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         initializeRounds()
         //checkCurrentRound()
         
+        let lastRound = roundsArray.removeAtIndex(0)
+        
+        usedRoundsArray.append(lastRound)
+        
+        currentRound = usedRoundsArray.last
+
+        
         let nc = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: "testNotification", name: "UserLoggedIn", object: nil)
+        nc.addObserver(self, selector: "testNotification", name: "sendBackData", object: nil)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -84,9 +91,9 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         
         let lastRound = roundsArray.removeAtIndex(0)
         
-        finishedRoundsArray.append(lastRound)
+        usedRoundsArray.append(lastRound)
         
-        currentRound = roundsArray[0]
+        currentRound = usedRoundsArray.last
         
         print("Current Round is now \(currentRound.value)")
         
@@ -186,15 +193,16 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
     //MARK: - TableView
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return self.finishedRoundsArray.count
-        } else {
-            return self.roundsArray.count
-        }
+//        if section == 0 {
+//            return usedRoundsArray.count
+//        } else {
+//            return self.roundsArray.count
+//        }
+        return usedRoundsArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
@@ -218,7 +226,7 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         
         if indexPath.section == 0 {
             
-            let round = finishedRoundsArray[indexPath.row]
+            let round = usedRoundsArray[indexPath.row]
             cell.roundNumberLabel?.text = "Round \(round.value)"
             cell.redScoreLabel?.text = String(round.redScore)
             cell.blueScoreLabel?.text = String(round.blueScore)
@@ -230,22 +238,22 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
             cell.blueScoreLabel.enabled = !hasScore
             cell.redScoreLabel.enabled = !hasScore
         
-            
-        } else {
-            
-            let round = roundsArray[indexPath.row]
-            
-            cell.roundNumberLabel?.text = "Round \(round.value)"
-            cell.redScoreLabel?.text = String(round.redScore)
-            cell.blueScoreLabel?.text = String(round.blueScore)
-            
-            let hasScore = round.redScore != 0 && round.blueScore != 0
-            cell.selectionStyle = hasScore ? .None : .Default
-            cell.userInteractionEnabled = !hasScore
-            cell.roundNumberLabel.enabled = !hasScore
-            cell.blueScoreLabel.enabled = !hasScore
-            cell.redScoreLabel.enabled = !hasScore
-
+//            
+//        } else {
+//            
+//            let round = roundsArray[indexPath.row]
+//            
+//            cell.roundNumberLabel?.text = "Round \(round.value)"
+//            cell.redScoreLabel?.text = String(round.redScore)
+//            cell.blueScoreLabel?.text = String(round.blueScore)
+//            
+//            let hasScore = round.redScore != 0 && round.blueScore != 0
+//            cell.selectionStyle = hasScore ? .None : .Default
+//            cell.userInteractionEnabled = !hasScore
+//            cell.roundNumberLabel.enabled = !hasScore
+//            cell.blueScoreLabel.enabled = !hasScore
+//            cell.redScoreLabel.enabled = !hasScore
+//
         }
         
         return cell
