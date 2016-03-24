@@ -18,7 +18,7 @@ class BSRoundDetailScore: UIViewController {
     //RoundTimer
     var timer = NSTimer()
     @IBOutlet var roundTimerLabel: UILabel!
-    var roundTime = 10.0
+    var roundTime = 12.0
     //UIView
     @IBOutlet var redImageView: UIImageView!
     @IBOutlet var blueImageView: UIImageView!
@@ -63,11 +63,16 @@ class BSRoundDetailScore: UIViewController {
     var blueKnockedDown = 0
     var bluePointDed = 0
     
+    var redKDArray = [String]()
+    var blueKDArray = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         rotateLandscape()
         displayUI()
         startTimer()
+        
+        roundTimerLabel.text = timeString(roundTime)
             
     }
     override func shouldAutorotate() -> Bool {
@@ -80,18 +85,20 @@ class BSRoundDetailScore: UIViewController {
     
     func countDown(){
         roundTime--
-//        var dateString = String(roundTime)
-//        let dateFormatter = NSDateFormatter()
-//        dateFormatter.dateFormat = "mm:ss"
-//        let dateFormat = dateFormatter.dateFromString(dateString)
         
         if roundTime > 0{
-            roundTimerLabel.text = String(roundTime)
+            roundTimerLabel.text = timeString(roundTime)
         } else if roundTime == 0 {
             pushToRoundSummary()
             timer.invalidate()
         }
         
+    }
+    func timeString(time:NSTimeInterval) -> String {
+        let minutes = Int(time) / 60
+        let seconds = time - Double(minutes) * 60
+        //let secondsFraction = seconds - Double(Int(seconds))
+        return String(format:"%i:%02i",minutes,Int(seconds))
     }
 
     func rotateLandscape(){
@@ -152,12 +159,16 @@ class BSRoundDetailScore: UIViewController {
     }
     
     @IBAction func knockdownButtonTapped(sender: UIButton) {
+        let secondsIn = 12.0 - roundTime
         if redKnockdownButton == sender {
             blueKnockedDown += 1
-            print("Blue Knocked Down: \(blueKnockedDown) times")
+            redKDArray.append(timeString(secondsIn))
+            print("Blue Knocked Down: \(blueKnockedDown), \(redKDArray)")
+            
         } else if blueKnockdownButton == sender {
             redKnockedDown += 1
-            print("Red Knocked Down: \(redKnockedDown) times")
+            blueKDArray.append(timeString(secondsIn))
+            print("Red Knocked Down: \(redKnockedDown), \(blueKDArray)")
         }
         
     }
@@ -199,6 +210,8 @@ class BSRoundDetailScore: UIViewController {
             destinationVC.redPointDed = self.redPointDed
             destinationVC.bluePointDed = self.bluePointDed
             destinationVC.currentRound = self.currentRound
+            destinationVC.redKDArray = redKDArray
+            destinationVC.blueKDArray = blueKDArray
         }
         
     }

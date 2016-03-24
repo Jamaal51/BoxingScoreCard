@@ -34,6 +34,8 @@ class ViewController: UIViewController {
     var redKnockedDown = 0
     var redPointDed = 0
     var bluePointDed = 0
+    var redKDArray = [String]()
+    var blueKDArray = [String]()
     
     //Chart Variables
     private var chart: Chart?
@@ -52,6 +54,7 @@ class ViewController: UIViewController {
     var blueFighterScore = Int()
     
     //Select Round Winner
+    @IBOutlet var selectRoundWinnerLabel: UILabel!
     @IBOutlet var redScoreLabel: UILabel!
     @IBOutlet var blueScoreLabel: UILabel!
     @IBOutlet var roundWinnerSelector: UISegmentedControl!
@@ -62,6 +65,8 @@ class ViewController: UIViewController {
             super.viewDidLoad()
         
         print("Current Round is \(currentRound.value)")
+        
+        selectRoundWinnerLabel.text = "SELECT ROUND \(currentRound.value) WINNER"
         
         rotatePortrait()
         myView.layer.borderWidth = 0.5
@@ -90,8 +95,8 @@ class ViewController: UIViewController {
     func populateLabelsAtLoad(){
         redFighterLabel.text = self.redFighter!.lastName
         blueFighterLabel.text = self.blueFighter!.lastName
-        redKnockdownLabel.text = String(blueKnockedDown)
-        blueKnockdownLabel.text = String(redKnockedDown)
+        redKnockdownLabel.text = "\(blueKnockedDown), \(redKDArray)"
+        blueKnockdownLabel.text = "\(redKnockedDown), \(blueKDArray)"
         redPointsDedLabel.text = String(redPointDed)
         bluePointsDedLabel.text = String(bluePointDed)
         redFighterSuggScore.text = String(redFighterScore)
@@ -166,9 +171,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func segmentControlAction(sender: UISegmentedControl) {
-        
-    
-        
         
     }
 

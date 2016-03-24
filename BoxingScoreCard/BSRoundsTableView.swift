@@ -57,6 +57,8 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         usedRoundsArray.append(lastRound)
         
         currentRound = usedRoundsArray.last
+        
+        print("The Round is:\(currentRound.value)")
 
         
         let nc = NSNotificationCenter.defaultCenter()
@@ -71,21 +73,21 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         
         
     }
-    
-//    func checkCurrentRound() {
-//        print("Check Current Round")
-//       
-//        while (currentRound == nil){
-//            for round in roundsArray {
-//                if round.roundScored == false {
-//                    currentRound = round
-//                    print("Current round is Round \(currentRound!.value)")
-//                    break
-//                }
-//            }
-//        }
-//        
-//    }
+    @IBAction func backButton(sender: AnyObject) {
+        
+        let alertController = UIAlertController(title: "Done?", message: "This fight has not been saved. If you go back your scorecard will be lost.", preferredStyle: .ActionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (ACTION) -> Void in
+            self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        }
+        alertController.addAction(OKAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
+    }
     
     func testNotification(){
         
@@ -97,7 +99,7 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         
         print("Current Round is now \(currentRound.value)")
         
-        print("Notification works!")
+        //print("Notification works!")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -106,9 +108,11 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         tableView.reloadData()
         //checkCurrentRound()
         
-        if self.passedData != nil {
-        print("Data Passed: \(self.passedData!)")
-        }
+        print("The Round is:\(currentRound.value)")
+        
+//        if self.passedData != nil {
+//        print("Data Passed: \(self.passedData!)")
+//        }
     }
     
     func initializeRounds(){
@@ -122,10 +126,10 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         let round8 = Rounds(value: 8)
         let round9 = Rounds(value: 9)
         let round10 = Rounds(value: 10)
-        let roundeleven = Rounds(value: 11)
-        let roundtwelve = Rounds(value: 12)
+        let round11 = Rounds(value: 11)
+        let round12 = Rounds(value: 12)
         
-        roundsArray = [round1,round2, round3, round4, round5, round6, round7, round8, round9, round10, roundeleven,roundtwelve]
+        roundsArray = [round1,round2, round3, round4, round5, round6, round7, round8, round9, round10, round11,round12]
         
         currentRound = roundsArray[0]
         
@@ -197,11 +201,6 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if section == 0 {
-//            return usedRoundsArray.count
-//        } else {
-//            return self.roundsArray.count
-//        }
         return usedRoundsArray.count
     }
     
@@ -267,12 +266,8 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
             let destinationVC = segue.destinationViewController as! BSRoundDetailScore
             destinationVC.redFighter = redCornerFighter
             destinationVC.blueFighter = blueCornerFighter
-            
-            let indexPath = tableView.indexPathForSelectedRow
-            let passRound = roundsArray[(indexPath?.row)!]
-            destinationVC.currentRound = passRound
-            print("PassedRound:\(passRound)")
-            print("CALLED SEGUE")
+            destinationVC.currentRound = currentRound
+            print("PassedRound:\(currentRound.value)")
         }
     }
 
