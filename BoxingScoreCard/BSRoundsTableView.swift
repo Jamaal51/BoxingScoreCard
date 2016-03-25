@@ -236,12 +236,11 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         if round.redKnockdown > 0 {
             cell.redKnockdownImageView.image = UIImage(named: "knockdownIcon")
         }
-        if round.blueKnockdown > 0 {
-            cell.blueKnockdownImageView.image = UIImage(named: "knockdownIcon")
-        }
-        
         if round.redPointDed > 0 {
             cell.redPointDedImageView.image = UIImage(named: "pointdedIcon")
+        }
+        if round.blueKnockdown > 0 {
+            cell.blueKnockdownImageView.image = UIImage(named: "knockdownIcon")
         }
         if round.bluePointDed > 0 {
             cell.blueKnockdownImageView.image = UIImage(named: "pointdedIcon")
