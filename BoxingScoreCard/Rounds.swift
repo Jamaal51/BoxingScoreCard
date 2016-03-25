@@ -13,7 +13,7 @@ class Rounds {
     var redScore: Int = 0
     var blueScore: Int = 0
     var winnerOfRound: String?
-    var close: Bool?
+    var closeRound: Bool?
     var roundScored = false
     var redKnockdown: Int = 0
     var blueKnockdown: Int = 0

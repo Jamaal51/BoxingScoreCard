@@ -13,11 +13,13 @@ class Fight {
     var fighterBlueCorner: String
     var fighterRedCorner: String
     var winnerOfFight: String               //who won - class of fighter
-    var resultOfFight: String               //result = UD, SD, ND, KO, TKO, RTD
+    var resultOfFight: String               //result = Points, KO, TKO, RTD
     var roundEnded: Rounds
     var timeEnded: Int
+    var redFinalScore: Int
+    var blueFinalScore: Int
     
-    init(roundsArray:[Rounds], fighterBlueCorner: String, fighterRedCorner: String, winnerOfFight: String, resultOfFight: String, roundEnded: Rounds, timeEnded: Int){
+    init(roundsArray:[Rounds], fighterBlueCorner: String, fighterRedCorner: String, winnerOfFight: String, resultOfFight: String, roundEnded: Rounds, timeEnded: Int, redFinalScore: Int, blueFinalScore: Int){
     self.roundsArray = roundsArray
     self.fighterBlueCorner = fighterBlueCorner
     self.fighterRedCorner = fighterRedCorner
@@ -25,5 +27,7 @@ class Fight {
     self.resultOfFight = resultOfFight
     self.roundEnded = roundEnded
     self.timeEnded = timeEnded
+    self.redFinalScore = redFinalScore
+    self.blueFinalScore = blueFinalScore
     }
 }

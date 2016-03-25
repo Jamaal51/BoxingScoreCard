@@ -12,7 +12,12 @@ class CustomRoundsTableViewCell: UITableViewCell {
     @IBOutlet var roundNumberLabel: UILabel!
     @IBOutlet var blueScoreLabel: UILabel!
     @IBOutlet var redScoreLabel: UILabel!
-
+    @IBOutlet var redKnockdownImageView: UIImageView!
+    @IBOutlet var redPointDedImageView: UIImageView!
+    @IBOutlet var blueKnockdownImageView: UIImageView!
+    @IBOutlet var bluePointDedImageView: UIImageView!
+    @IBOutlet var closeRoundImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 

@@ -32,6 +32,15 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
     
     @IBOutlet var tableView: UITableView!
     
+    //bottomView
+    var redTotalScore = 0
+    var blueTotalScore = 0
+    @IBOutlet var redTotalScoreLabel: UILabel!
+    @IBOutlet var blueTotalScoreLabel: UILabel!
+    
+    //tableviewCell image variables
+    var closeRound = false  
+    
     var redCornerFighter: Fighter?
     var blueCornerFighter: Fighter?
     var roundsArray = [Rounds]()
@@ -50,7 +59,6 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         displayUI()
         assignTapGestures()
         initializeRounds()
-        //checkCurrentRound()
         
         let lastRound = roundsArray.removeAtIndex(0)
         
@@ -59,7 +67,6 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         currentRound = usedRoundsArray.last
         
         print("The Round is:\(currentRound.value)")
-
         
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: "testNotification", name: "sendBackData", object: nil)
@@ -70,9 +77,14 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         self.tableView.userInteractionEnabled = false
         self.tableView.backgroundColor = UIColor.grayColor()
         topViewLabel.text = "Choose Fighters"
-        
-        
     }
+    
+    func updateTotalScoreLabels(){
+        redTotalScoreLabel.text = String(redTotalScore)
+        blueTotalScoreLabel.text = String(blueTotalScore)
+    }
+    
+    
     @IBAction func backButton(sender: AnyObject) {
         
         let alertController = UIAlertController(title: "Done?", message: "This fight has not been saved. If you go back your scorecard will be lost.", preferredStyle: .ActionSheet)
@@ -91,6 +103,9 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
     
     func testNotification(){
         
+        updateTotalScoreLabels()
+        
+        if !roundsArray.isEmpty {
         let lastRound = roundsArray.removeAtIndex(0)
         
         usedRoundsArray.append(lastRound)
@@ -98,15 +113,16 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
         currentRound = usedRoundsArray.last
         
         print("Current Round is now \(currentRound.value)")
-        
-        //print("Notification works!")
+    
+        } else {
+            print("Fightover")
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
         tableView.reloadData()
-        //checkCurrentRound()
         
         print("The Round is:\(currentRound.value)")
         
@@ -210,50 +226,40 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
             return UITableViewCell()
         }
         
-//        let round = roundsArray[indexPath.row]
-//        
-//        cell.roundNumberLabel?.text = "Round \(round.value)"
-//        cell.redScoreLabel?.text = String(round.redScore)
-//        cell.blueScoreLabel?.text = String(round.blueScore)
-//        
-//        let hasScore = round.redScore != 0 && round.blueScore != 0
-//        cell.selectionStyle = hasScore ? .None : .Default
-//        cell.userInteractionEnabled = !hasScore
-//        cell.roundNumberLabel.enabled = !hasScore
-//        cell.blueScoreLabel.enabled = !hasScore
-//        cell.redScoreLabel.enabled = !hasScore
+       // if indexPath.section == 0 {
         
-        if indexPath.section == 0 {
-            
             let round = usedRoundsArray[indexPath.row]
             cell.roundNumberLabel?.text = "\(round.value)"
             cell.redScoreLabel?.text = String(round.redScore)
             cell.blueScoreLabel?.text = String(round.blueScore)
+        
+        if round.redKnockdown > 0 {
+            cell.redKnockdownImageView.image = UIImage(named: "knockdownIcon")
+        }
+        if round.blueKnockdown > 0 {
+            cell.blueKnockdownImageView.image = UIImage(named: "knockdownIcon")
+        }
+        
+        if round.redPointDed > 0 {
+            cell.redPointDedImageView.image = UIImage(named: "pointdedIcon")
+        }
+        if round.bluePointDed > 0 {
+            cell.blueKnockdownImageView.image = UIImage(named: "pointdedIcon")
+        }
+        if round.closeRound == true {
+            cell.closeRoundImageView.image = UIImage(named: "closeroundIcon")
+        }
 
-            let hasScore = round.redScore != 0 && round.blueScore != 0
+            //let hasScore = round.redScore != 0 && round.blueScore != 0
+        
+            let hasScore = round.roundScored == true
             cell.selectionStyle = hasScore ? .None : .Default
             cell.userInteractionEnabled = !hasScore
             cell.roundNumberLabel.enabled = !hasScore
             cell.blueScoreLabel.enabled = !hasScore
             cell.redScoreLabel.enabled = !hasScore
         
-//            
-//        } else {
-//            
-//            let round = roundsArray[indexPath.row]
-//            
-//            cell.roundNumberLabel?.text = "Round \(round.value)"
-//            cell.redScoreLabel?.text = String(round.redScore)
-//            cell.blueScoreLabel?.text = String(round.blueScore)
-//            
-//            let hasScore = round.redScore != 0 && round.blueScore != 0
-//            cell.selectionStyle = hasScore ? .None : .Default
-//            cell.userInteractionEnabled = !hasScore
-//            cell.roundNumberLabel.enabled = !hasScore
-//            cell.blueScoreLabel.enabled = !hasScore
-//            cell.redScoreLabel.enabled = !hasScore
-//
-        }
+        //}
         
         return cell
         

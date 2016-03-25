@@ -59,6 +59,7 @@ class ViewController: UIViewController {
     @IBOutlet var blueScoreLabel: UILabel!
     @IBOutlet var roundWinnerSelector: UISegmentedControl!
     @IBOutlet var closeRoundSwitch: UISwitch!
+    var closeRound = false
     var roundWinner: Fighter?
     
     override func viewDidLoad() {
@@ -173,6 +174,9 @@ class ViewController: UIViewController {
     @IBAction func segmentControlAction(sender: UISegmentedControl) {
         
     }
+    @IBAction func closeRoundTapped(sender: UISwitch) {
+        closeRound = closeRoundSwitch.on ? true : false
+    }
 
 //MARK: SegueToRoot
     
@@ -180,10 +184,21 @@ class ViewController: UIViewController {
         //self.navigationController!.popToRootViewControllerAnimated(true)
         
         let rootView = self.navigationController!.viewControllers.first as! BSRoundsTableView
-        rootView.passedData = "DATA PASS WORKS!"
     
         rootView.currentRound.redScore = redFighterScore
         rootView.currentRound.blueScore = blueFighterScore
+        rootView.currentRound.closeRound = closeRound
+        rootView.currentRound.roundScored = true
+        rootView.currentRound.redKnockdown = blueKnockedDown
+        rootView.currentRound.blueKnockdown = redKnockedDown
+        rootView.currentRound.redPointDed = redPointDed
+        rootView.currentRound.bluePointDed = bluePointDed
+        rootView.currentRound.roundScored = true
+        
+        rootView.redTotalScore += redFighterScore
+        rootView.blueTotalScore += blueFighterScore
+        
+        rootView.currentRound.closeRound = closeRound ? true : false
         
         let nc = NSNotificationCenter.defaultCenter()
         nc.postNotificationName("sendBackData", object: nil)
