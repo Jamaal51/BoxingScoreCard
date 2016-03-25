@@ -1473,7 +1473,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YpG-YS-gqM">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="560"/>
                                         <subviews>
-                                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g6Y-KP-2Xj">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g6Y-KP-2Xj">
                                                 <rect key="frame" x="0.0" y="4" width="300" height="552"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hd4-Z7-eWv">
@@ -1490,10 +1490,11 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtr-QN-YoB">
-                                                        <rect key="frame" x="8" y="8" width="138" height="20"/>
-                                                        <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtr-QN-YoB">
+                                                        <rect key="frame" x="8" y="8" width="138" height="24"/>
+                                                        <color key="backgroundColor" red="0.34986696270000001" green="0.54537898389999995" blue="0.76012073859999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="IowanOldStyle-Bold" family="Iowan Old Style" pointSize="17"/>
+                                                        <color key="textColor" red="0.85909880049999998" green="0.85909880049999998" blue="0.85909880049999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzr-9M-I7L" customClass="WYMaterialButton" customModule="WYMaterialButton">
@@ -1502,7 +1503,7 @@
                                                             <constraint firstAttribute="height" constant="60" id="6Fv-fi-47D"/>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Vs7-TC-q8h"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="14"/>
                                                         <state key="normal" title="Defense"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="materialColor">
@@ -1523,7 +1524,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="PaY-8e-lkv"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="14"/>
                                                         <state key="normal" title="Clean Punching"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="materialColor">
@@ -1536,7 +1537,7 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xX3-bk-GEr" customClass="WYMaterialButton" customModule="WYMaterialButton">
                                                         <rect key="frame" x="154" y="484" width="138" height="60"/>
-                                                        <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="13"/>
+                                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="13"/>
                                                         <state key="normal" title="Ring Generalship"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="materialColor">
@@ -1552,7 +1553,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="8te-4H-brd"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="12"/>
                                                         <state key="normal" title="Effective Aggression"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="materialColor">
@@ -1573,12 +1574,22 @@
                                                                     <constraint firstAttribute="width" constant="60" id="8Mg-sB-4Jk"/>
                                                                     <constraint firstAttribute="height" constant="60" id="V6q-dx-7bZ"/>
                                                                 </constraints>
+                                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="12"/>
                                                                 <state key="normal" title="- Point">
-                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="materialColor">
                                                                         <color key="value" red="0.85909880049999998" green="0.85909880049999998" blue="0.85909880049999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="30"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                        <real key="value" value="1"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
@@ -1593,7 +1604,7 @@
                                                                     <constraint firstAttribute="height" constant="80" id="sGe-t8-k4B"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="10"/>
-                                                                <state key="normal" title="KNOCKDOWN">
+                                                                <state key="normal" title="Knockdown">
                                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
@@ -1602,6 +1613,9 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                         <real key="value" value="40"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                        <real key="value" value="2"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
@@ -1688,7 +1702,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1w-QC-bkH" userLabel="RedCornerView">
                                 <rect key="frame" x="0.0" y="40" width="300" height="560"/>
                                 <subviews>
-                                    <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKq-kl-z9a">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKq-kl-z9a">
                                         <rect key="frame" x="0.0" y="4" width="300" height="552"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eS3-Yi-dBK">
@@ -1709,15 +1723,16 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ko-KQ-YTs">
-                                                <rect key="frame" x="154" y="8" width="138" height="20"/>
-                                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ko-KQ-YTs">
+                                                <rect key="frame" x="154" y="8" width="138" height="24"/>
+                                                <color key="backgroundColor" red="0.98580998180000001" green="0.1192214363" blue="0.082437666150000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="IowanOldStyle-Bold" family="Iowan Old Style" pointSize="17"/>
+                                                <color key="textColor" red="0.85909880049999998" green="0.85909880049999998" blue="0.85909880049999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="do4-Lw-fGw" customClass="WYMaterialButton" customModule="WYMaterialButton">
                                                 <rect key="frame" x="8" y="484" width="138" height="60"/>
-                                                <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="13"/>
+                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="13"/>
                                                 <state key="normal" title="Ring Generalship"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="materialColor">
@@ -1733,7 +1748,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="VXF-tc-qkZ"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="12"/>
                                                 <state key="normal" title="Effective Aggression"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="materialColor">
@@ -1749,7 +1764,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="Zvp-l6-Tg4"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="14"/>
                                                 <state key="normal" title="Clean Punching"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="materialColor">
@@ -1766,7 +1781,7 @@
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Oh3-hS-nri"/>
                                                     <constraint firstAttribute="height" constant="60" id="SDX-jX-VfO"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="14"/>
                                                 <state key="normal" title="Defense"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="materialColor">
@@ -1797,7 +1812,7 @@
                                                             <constraint firstAttribute="height" constant="80" id="zqq-Qn-n9s"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="10"/>
-                                                        <state key="normal" title="KNOCKDOWN">
+                                                        <state key="normal" title="Knockdown">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
@@ -1809,6 +1824,9 @@
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="40"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="2"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
@@ -1822,12 +1840,22 @@
                                                             <constraint firstAttribute="width" constant="60" id="3N0-D2-p9a"/>
                                                             <constraint firstAttribute="height" constant="60" id="KxK-Fp-LG9"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="12"/>
                                                         <state key="normal" title="- Point">
-                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="materialColor">
                                                                 <color key="value" red="0.85909880049999998" green="0.85909880049999998" blue="0.85909880049999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="30"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
@@ -1844,7 +1872,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="eS3-Yi-dBK" firstAttribute="top" secondItem="UKq-kl-z9a" secondAttribute="top" constant="8" id="0os-3s-StE"/>
                                             <constraint firstItem="eS3-Yi-dBK" firstAttribute="leading" secondItem="UKq-kl-z9a" secondAttribute="leading" constant="8" id="1JH-3y-NKB"/>

@@ -87,7 +87,7 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
     
     @IBAction func backButton(sender: AnyObject) {
         
-        let alertController = UIAlertController(title: "Done?", message: "This fight has not been saved. If you go back your scorecard will be lost.", preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: "Done?", message: "If your scorecard isn't saved it will be lost.", preferredStyle: .ActionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         alertController.addAction(cancelAction)
@@ -102,6 +102,9 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
     }
     
     func testNotification(){
+        
+        redCornerView.userInteractionEnabled = false
+        blueCornerView.userInteractionEnabled = false
         
         updateTotalScoreLabels()
         
@@ -243,7 +246,7 @@ class BSRoundsTableView: UIViewController,UITableViewDelegate, UITableViewDataSo
             cell.blueKnockdownImageView.image = UIImage(named: "knockdownIcon")
         }
         if round.bluePointDed > 0 {
-            cell.blueKnockdownImageView.image = UIImage(named: "pointdedIcon")
+            cell.bluePointDedImageView.image = UIImage(named: "pointdedIcon")
         }
         if round.closeRound == true {
             cell.closeRoundImageView.image = UIImage(named: "closeroundIcon")
