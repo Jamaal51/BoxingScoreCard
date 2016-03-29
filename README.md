@@ -6,4 +6,4 @@
 * Tabulate points for Clean Punching, Defense, Effective Aggression and Ring Generalship for each round
 * Choose a fighter or create a fighter profile
 
-<img src="BoxCard1.gif" alt="BoxCardGif">
+<img src="gifs/BoxCard1.gif" alt="BoxCardGif">
