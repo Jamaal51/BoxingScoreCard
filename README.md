@@ -7,3 +7,5 @@
 * Choose a fighter or create a fighter profile
 
 <img src="gifs/BoxCard1.gif" alt="BoxCardGif">
+<img src="gifs/boxcardpic1.jpg" alt="BoxCardGif">
+<img src="gifs/boxcardpic2.jpg" alt="BoxCardGif">
