@@ -8,4 +8,4 @@
 
 <img src="gifs/BoxCard1.gif" alt="BoxCardGif">
 <img src="gifs/boxcardpic1.jpg" alt="BoxCardGif" height="667" width="375">
-<img src="gifs/boxcardpic2.jpg" alt="BoxCardGif">
+<img src="gifs/boxcardpic2.jpg" alt="BoxCardGif" height="375" width="667">
